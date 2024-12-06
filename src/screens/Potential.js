@@ -1,63 +1,116 @@
-import mainScreen from '../assets/img/Screenshot1.png';
+import { useState } from 'react';
+import firstImg from "../assets/img/Screenshot1.png";
+import secondImg from "../assets/img/Screenshot2.png";
+import thirdImg from "../assets/img/Screenshot3.png";
+import expGap from "../assets/svg/git-network.svg";
+import targeted from "../assets/svg/school.svg";
+import global from "../assets/svg/earth.svg";
+import money from "../assets/svg/cash.svg";
+import scalability from "../assets/svg/scan.svg";
+import features from "../assets/svg/construct.svg";
+
 
 const Potential = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const handleToggle = (index) => {
+        setActiveIndex(index);
+    };
+
+    const sections = [
+        {
+            title: "Bridging the Experience Gap",
+            content: "Provides IT students with real-world project experience, bridging the gap between academics and industry demands",
+            image: firstImg,
+            icon: expGap,
+        },
+        {
+            title: "Targeted Niche",
+            content: "Focused on IT students and non-commercial projects, ensuring clear market positioning with room for future expansion to other fields",
+            image: secondImg,
+            icon: targeted,
+        },
+        {
+            title: "Global Appeal",
+            content: "Universally relevant for students, universities, and businesses, with scalability to diverse regions and markets.",
+            image: thirdImg,
+            icon: global,
+        },
+        {
+            title: "Investor-Friendly Model",
+            content: "Monetization through subscriptions, premium features, and partnerships with educational institutions and businesses",
+            image: firstImg,
+            icon: money,
+        },
+        {
+            title: "Scalability",
+            content: "Easily adaptable for global expansion, non-IT sectors, and advanced features like AI-driven matching and mentoring",
+            image: thirdImg,
+            icon: scalability,
+        },
+        {
+            title: "Future-Proof Features",
+            content: "Potential for integration with cutting-edge technologies (AI, video collaboration, analytics) and evolving industry needs.)",
+            image: firstImg,
+            icon: features
+        }
+    ];
+
     return (
         <div id="potential" style={styles.container}>
-            <h1>
-                Application potential
-            </h1>
-            <p style={{color:'gray', fontSize: 14, width:'70%', textAlign: 'center'}}>
-                Наша платформа обладает огромным потенциалом для изменения образовательной системы,
-                построения активного сообщества и создания новых возможностей для монетизации.
-                Мы объединяем инновации и практические решения для глобального улучшения.
+            <h1 style={{fontSize: '52px', marginBottom: '1px'}}>Application potential</h1>
+            <p style={{color: 'gray', fontSize: '18px', width: '70%', textAlign: 'center', fontWeight: 'bold'}}>
+                Our platform connects academic learning with real-world IT experience. Students gain skills and build
+                portfolios through non-commercial projects. Scalable and global, it supports various industries with
+                subscription-based monetization and plans for AI integration.
             </p>
             <div style={{
                 display: 'flex',
                 justifyContent: "space-around",
                 alignItems: "center",
-                width: '100%',
+                width: '80%',
                 marginTop: '30px'
             }}>
-                <img src={mainScreen} style={{
-                    height: '75vh',
-                    width: 'auto',
-                    borderRadius: '24px',
-                    boxShadow: "0 20px 30px rgba(0, 0, 0, 0.5)"
-                }}/>
-                <div style={{display: 'flex', flexDirection: "column", gap: '40px'}}>
-                    <div style={styles.mobileUI}>
-                        <h1 style={{fontSize: '18px'}}>
-                            Большое комьюнити
-                        </h1>
-                        <p style={{fontSize: '14px', color: 'gray'}}>
-                            Наша платформа предоставляет пользователям возможность взаимодействовать, делиться опытом и
-                            учиться друг у друга. Мы создаём активное и поддерживающее сообщество.
-                        </p>
-                    </div>
-                    <div style={styles.mobileUI}>
-                        <h1 style={{fontSize: '18px'}}>
-                            Большое поле для монетизации
-                        </h1>
-                        <p style={{fontSize: '14px', color: 'gray'}}>
-                            Платформа предлагает широкий спектр возможностей для монетизации, таких как
-                            премиум-подписки, платные курсы и рекламные интеграции.
-                        </p>
-                    </div>
-                    <div style={styles.mobileUI}>
-                        <h1 style={{fontSize: '18px'}}>
-                            Обновление системы общего образования
-                        </h1>
-                        <p style={{fontSize: '14px', color: 'gray'}}>
-                            Мы стремимся модернизировать систему образования, делая обучение доступным, инновационным и
-                            адаптивным к современным реалиям.
-                        </p>
-                    </div>
+                <img
+                    src={sections[activeIndex].image}
+                    style={{
+                        height: '85vh',
+                        width: 'auto',
+                        borderRadius: '24px',
+                        boxShadow: "0 20px 30px rgba(0, 0, 0, 0.5)"
+                    }}
+                    alt="Main Screen"
+                />
+                <div style={{display: 'flex', flexDirection: "column", gap: '20px'}}>
+                    {sections.map((section, index) => (
+                        <div
+                            key={index}
+                            onClick={() => handleToggle(index)}
+                            style={{
+                                ...styles.mobileUI,
+                                backgroundColor: activeIndex === index ? '#000' : '#fff',
+                                color: activeIndex === index ? '#fff' : '#000',
+                                cursor: 'pointer',
+                                paddingLeft: activeIndex === index ? '20px' : '10px',
+                            }}
+                        >
+                            {activeIndex !== index &&
+                                <img src={section.icon} style={{width: '3vh', height: 'auto', marginRight: '10px'}}/>}
+                            <div>
+                                <h1 style={{fontSize: '18px'}}>{section.title}</h1>
+                                {activeIndex === index && (
+                                    <p style={{fontSize: '16px', color: 'gray'}}>
+                                        {section.content}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
-
         </div>
-    )
-}
+    );
+};
 
 const styles = {
     container: {
@@ -65,18 +118,20 @@ const styles = {
         flexDirection: "column",
         alignItems: 'center',
         padding: "20px",
-        // paddingTop: "100px",
         backgroundColor: "#f9f9f9",
     },
     mobileUI: {
         backgroundColor: "#fff",
         borderRadius: "16px",
+        display: "flex",
+        flexDirection: "row",
         boxShadow: "0 10px 10px rgba(0, 0, 0, 0.2)",
-        padding: "20px",
+        padding: "10px",
         width: "100%",
-        maxWidth: "400px",
+        maxWidth: "500px",
         margin: "0 auto",
+        transition: "background-color 0.3s ease",
     },
-}
+};
 
-export default Potential
+export default Potential;

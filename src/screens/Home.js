@@ -48,7 +48,6 @@ const Home = () => {
                     />
                 </div>
             </section>
-
             <section style={styles.statsSection}>
                 <div style={styles.statItem}>
                 <h3 style={styles.statNumber}>22k</h3>
@@ -67,7 +66,6 @@ const Home = () => {
                     <p style={styles.statLabel}>Team Members</p>
                 </div>
             </section>
-
         </div>
     );
 };
@@ -78,7 +76,7 @@ const styles = {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
-        minHeight: "90vh", // Растягивает контейнер на весь экран
+        minHeight: "90vh",
         backgroundColor: "#f9f9f9",
     },
     hero: {
@@ -89,15 +87,15 @@ const styles = {
         flex: 1,
     },
     downloadText: {
-        fontSize: "14px", // Размер текста "Download"
-        fontWeight: "bold", // Сделать жирным
-        margin: "0", // Убирает дополнительные отступы
-        lineHeight: "1", // Уменьшает расстояние между строками
+        fontSize: "14px",
+        fontWeight: "bold",
+        margin: "0",
+        lineHeight: "1",
     },
     subText: {
-        fontSize: "12px", // Размер текста "on the App Store"
-        margin: "0", // Убирает дополнительные отступы
-        lineHeight: "1", // Уменьшает расстояние между строками
+        fontSize: "12px",
+        margin: "0",
+        lineHeight: "1",
     },
     textContainer: {
         flex: 1,
@@ -153,7 +151,7 @@ const styles = {
         backgroundColor: "#fff",
         borderRadius: "24px",
         boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)",
-        border: "1px solid rgba(0, 0, 0, 0.05)", // Лёгкая граница
+        border: "1px solid rgba(0, 0, 0, 0.05)",
     },
     statItem: {
         textAlign: "center",

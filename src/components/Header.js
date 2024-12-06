@@ -53,6 +53,15 @@ const Header = () => {
                             Potential
                         </ScrollLink>
                         <ScrollLink
+                            to="roadmap"
+                            smooth={true}
+                            duration={500}
+                            offset={-70}
+                            style={styles.buttonStyles}
+                        >
+                            Roadmap
+                        </ScrollLink>
+                        <ScrollLink
                             to="contacts"
                             smooth={true}
                             duration={500}

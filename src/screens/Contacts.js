@@ -24,9 +24,9 @@ const Contacts = () => {
     return (
         <div id="contacts" style={styles.container}>
             <div style={{display: "flex", flexDirection: "column", alignItems: "flex-start"}}>
-                <h1>Contact Us</h1>
-                <p style={{color: 'gray', fontSize: '14px', width: '50%'}}>
-                    Email, call, or complete the form to learn how Snappy can solve your messaging problem.
+                <h1 style={{marginBottom: '0px'}}>Contact Us</h1>
+                <p style={{color: 'gray', fontSize: '14px', width: '50%', marginTop: '6px'}}>
+                    Email, call, or complete the form to contact us directly.
                 </p>
                 <p style={{color: 'gray', fontSize: '14px'}}>
                     info@snappy.io
@@ -34,20 +34,13 @@ const Contacts = () => {
                 <p style={{color: 'gray', fontSize: '14px'}}>
                     321-221-231
                 </p>
-                <div style={{display: "flex", flexDirection: "row", gap: "20px"}}>
-                    <div style={{display: "flex", flexDirection: "column", flex: 1}}>
-                        <h1 style={{fontSize: "18px"}}>Feedback and Suggestions</h1>
-                        <p style={{color: "gray", fontSize: "14px"}}>
-                            We value your feedback and are continuously working to improve
-                            Snappy. Your input is crucial in shaping the future of Snappy.
-                        </p>
-                    </div>
-                    <div style={{display: "flex", flexDirection: "column", flex: 1}}>
-                        <h1 style={{fontSize: "18px"}}>Media Inquiries</h1>
-                        <p style={{color: "gray", fontSize: "14px"}}>
-                            For media-related questions or press inquiries, please contact us at media@snappyapp.com.
-                        </p>
-                    </div>
+
+                <div style={{display: "flex", flexDirection: "column", width: '30vh'}}>
+                    <h1 style={{fontSize: "18px", marginBottom: '0px'}}>Feedback and Suggestions</h1>
+                    <p style={{color: "gray", fontSize: "14px", marginTop: '6px'}}>
+                        We value your feedback and are continuously working to improve
+                        UNIRISE. Your input is crucial in shaping the future of UNIRISE.
+                    </p>
                 </div>
             </div>
             <div style={styles.mobileUI}>
@@ -84,7 +77,7 @@ const Contacts = () => {
                     />
                     <textarea
                         name="message"
-                        placeholder="How can we help? (max 120 characters)"
+                        placeholder="How can we help?"
                         value={formData.message}
                         onChange={handleChange}
                         style={styles.textarea}
@@ -105,7 +98,7 @@ const styles = {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        alignItems: 'center',
+        // alignItems: 'center',
         padding: "80px",
         // paddingTop: "100px",
         backgroundColor: "#f9f9f9",
@@ -116,7 +109,7 @@ const styles = {
         boxShadow: "0 10px 10px rgba(0, 0, 0, 0.2)",
         padding: "20px",
         width: "100%",
-        maxWidth: "400px",
+        maxWidth: "800px",
         margin: "0 auto",
     },
     form: {
@@ -140,11 +133,15 @@ const styles = {
     },
     button: {
         padding: "10px",
+        paddingRight: "20px",
+        paddingLeft: "20px",
         borderRadius: "8px",
         border: "none",
         backgroundColor: "#000",
         color: "#fff",
         fontSize: "16px",
+        // justifyContent: "center",
+        alignSelf: "center",
         cursor: "pointer",
     },
 };

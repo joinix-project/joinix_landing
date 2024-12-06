@@ -24,17 +24,10 @@ const AppContent = () => {
         <Header />
 
         <main style={mainContentStyle}>
-          {/*<Routes>*/}
-          {/*  <Route path="/" element={<Home />} />*/}
-          {/*  <Route path="/aboutcompany" element={<AboutCompany />} />*/}
-          {/*  <Route path="/potential" element={<Potential />} />*/}
-          {/*  <Route path="/contacts" element={<Contacts />} />*/}
-          {/*  <Route path="/roadmap" element={<RoadMap />} />*/}
-          {/*</Routes>*/}
             <Home/>
             <AboutCompany/>
             <Potential/>
-            {/*<RoadMap/>*/}
+            <RoadMap/>
             <Contacts/>
         </main>
 

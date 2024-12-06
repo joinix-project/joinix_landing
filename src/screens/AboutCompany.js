@@ -7,66 +7,48 @@ const AboutCompany = () => {
     return (
         <div id="about" style={styles.container}>
             <h1 style={styles.title}>About our app</h1>
-
             <div style={styles.rowContent}>
                 <div style={{display: 'flex', flexDirection: "column", alignItems: "center"}}>
                     <img
                         src={screen1}
-                        alt="Smart Home"
                         style={styles.image}
                     />
                     <div style={styles.mobileUI}/>
                 </div>
                 <div style={styles.textSection}>
-                    <h2 style={styles.subtitle}>Smart Home's Smart Services</h2>
+                    <h2 style={styles.subtitle}>First experience of working in a team</h2>
                     <p style={styles.description}>
-                        Ye am depending propriety sweetness distrusts belonging collected.
-                        Smiling mention he in thought equally musical.Ye am depending propriety sweetness distrusts
-                        belonging collected.
-                        Smiling mention he in thought equally musical. Wisdom new and
-                        valley answer. Contented it so is discourse recommend.
+                        Our platform helps individuals connect by tech stack, collaborate on projects, gain team experience, and build portfolios, offering beginners hands-on opportunities to grow.
                     </p>
                 </div>
             </div>
-
             <div style={styles.rowContent}>
                 <div style={styles.textSection}>
-                    <h2 style={styles.subtitle}>Smart Home's Smart Services</h2>
+                    <h2 style={styles.subtitle}>Quick start</h2>
                     <p style={styles.description}>
-                        Ye am depending propriety sweetness distrusts belonging collected.
-                        Smiling mention he in thought equally musical.Ye am depending propriety sweetness distrusts
-                        belonging collected.
-                        Smiling mention he in thought equally musical. Wisdom new and
-                        valley answer. Contented it so is discourse recommend.
+                        Our platform helps users with ideas but no team find like-minded individuals and form dedicated teams. Using our tools, they can collaborate to turn ideas into MVPs, paving the way for startup growth.
                     </p>
                 </div>
                 <div style={{display: 'flex', flexDirection: "column", alignItems: "center"}}>
                     <img
                         src={screen2}
-                        alt="Smart Home"
                         style={styles.image}
                     />
                     <div style={styles.mobileUI}/>
                 </div>
             </div>
-
             <div style={styles.rowContent}>
                 <div style={{display: 'flex', flexDirection: "column", alignItems: "center"}}>
                     <img
                         src={screen3}
-                        alt="Smart Home"
                         style={styles.image}
                     />
                     <div style={styles.mobileUI}/>
                 </div>
                 <div style={styles.textSection}>
-                    <h2 style={styles.subtitle}>Smart Home's Smart Services</h2>
+                    <h2 style={styles.subtitle}>All-in-One Platform for Teamwork</h2>
                     <p style={styles.description}>
-                        Ye am depending propriety sweetness distrusts belonging collected.
-                        Smiling mention he in thought equally musical.Ye am depending propriety sweetness distrusts
-                        belonging collected.
-                        Smiling mention he in thought equally musical. Wisdom new and
-                        valley answer. Contented it so is discourse recommend.
+                        Many platforms offer communication, task management, and file sharing, but they are often separate. Our platform unifies these features, allowing users to manage tasks, communicate, and share files seamlessly in one place, boosting efficiency.
                     </p>
                 </div>
             </div>
@@ -115,12 +97,12 @@ const styles = {
         maxWidth: "500px",
     },
     subtitle: {
-        fontSize: "28px",
+        fontSize: "32px",
         marginBottom: "20px",
         color: "#000",
     },
     description: {
-        fontSize: "14px",
+        fontSize: "18px",
         marginBottom: "20px",
         lineHeight: "1.6",
         fontWeight: '600',
