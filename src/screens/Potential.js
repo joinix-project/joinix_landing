@@ -1,14 +1,17 @@
 import { useState } from 'react';
-import firstImg from "../assets/img/Screenshot1.png";
-import secondImg from "../assets/img/Screenshot2.png";
-import thirdImg from "../assets/img/Screenshot3.png";
+import firstImg from "../assets/img/pngwing.png";
+import secondImg from "../assets/img/pngwing2.png";
+import thirdImg from "../assets/img/global.svg"
+import forthImg from "../assets/img/investor.svg"
+import fifthImg from "../assets/img/scale.svg"
+import sixImg from "../assets/img/future.svg"
 import expGap from "../assets/svg/git-network.svg";
 import targeted from "../assets/svg/school.svg";
 import global from "../assets/svg/earth.svg";
 import money from "../assets/svg/cash.svg";
 import scalability from "../assets/svg/scan.svg";
 import features from "../assets/svg/construct.svg";
-
+import COLORS from "../assets/colors";
 
 const Potential = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -39,69 +42,61 @@ const Potential = () => {
         {
             title: "Investor-Friendly Model",
             content: "Monetization through subscriptions, premium features, and partnerships with educational institutions and businesses",
-            image: firstImg,
+            image: forthImg,
             icon: money,
         },
         {
             title: "Scalability",
             content: "Easily adaptable for global expansion, non-IT sectors, and advanced features like AI-driven matching and mentoring",
-            image: thirdImg,
+            image: fifthImg,
             icon: scalability,
         },
         {
             title: "Future-Proof Features",
-            content: "Potential for integration with cutting-edge technologies (AI, video collaboration, analytics) and evolving industry needs.)",
-            image: firstImg,
-            icon: features
-        }
+            content: "Potential for integration with cutting-edge technologies (AI, video collaboration, analytics) and evolving industry needs.",
+            image: sixImg,
+            icon: features,
+        },
     ];
 
     return (
         <div id="potential" style={styles.container}>
-            <h1 style={{fontSize: '52px', marginBottom: '1px'}}>Application potential</h1>
-            <p style={{color: 'gray', fontSize: '18px', width: '70%', textAlign: 'center', fontWeight: 'bold'}}>
+            <h1 style={styles.title}>Application potential</h1>
+            <p style={styles.description}>
                 Our platform connects academic learning with real-world IT experience. Students gain skills and build
                 portfolios through non-commercial projects. Scalable and global, it supports various industries with
                 subscription-based monetization and plans for AI integration.
             </p>
-            <div style={{
-                display: 'flex',
-                justifyContent: "space-around",
-                alignItems: "center",
-                width: '80%',
-                marginTop: '30px'
-            }}>
+            <div style={styles.content}>
                 <img
                     src={sections[activeIndex].image}
-                    style={{
-                        height: '85vh',
-                        width: 'auto',
-                        borderRadius: '24px',
-                        boxShadow: "0 20px 30px rgba(0, 0, 0, 0.5)"
-                    }}
+                    style={styles.mainImage}
                     alt="Main Screen"
                 />
-                <div style={{display: 'flex', flexDirection: "column", gap: '20px'}}>
+                <div style={styles.sectionsContainer}>
                     {sections.map((section, index) => (
                         <div
                             key={index}
                             onClick={() => handleToggle(index)}
                             style={{
-                                ...styles.mobileUI,
-                                backgroundColor: activeIndex === index ? '#000' : '#fff',
-                                color: activeIndex === index ? '#fff' : '#000',
-                                cursor: 'pointer',
+                                ...styles.sectionCard,
+                                backgroundColor: activeIndex === index ? COLORS.primaryText : COLORS.accent,
+                                color: activeIndex === index ? "#fff" : COLORS.primaryText,
                                 paddingLeft: activeIndex === index ? '20px' : '10px',
+                                borderColor: COLORS.border,
                             }}
                         >
-                            {activeIndex !== index &&
-                                <img src={section.icon} style={{width: '3vh', height: 'auto', marginRight: '10px'}}/>}
+                            {activeIndex !== index && (
+                                <img
+                                    src={section.icon}
+                                    style={styles.icon}
+                                    alt={`${section.title} icon`}
+                                />
+                            )}
                             <div>
-                                <h1 style={{fontSize: '18px'}}>{section.title}</h1>
+                                <h2 style={styles.sectionTitle}>{section.title}</h2>
                                 {activeIndex === index && (
-                                    <p style={{fontSize: '16px', color: 'gray'}}>
-                                        {section.content}
-                                    </p>
+                                    <p style={styles.sectionContent}>{section.content}</p>
                                 )}
                             </div>
                         </div>
@@ -116,21 +111,67 @@ const styles = {
     container: {
         display: "flex",
         flexDirection: "column",
-        alignItems: 'center',
-        padding: "20px",
-        backgroundColor: "#f9f9f9",
+        alignItems: "center",
+        padding: "clamp(20px, 5vw, 80px)",
+        backgroundColor: COLORS.background,
+        marginTop: 100
     },
-    mobileUI: {
-        backgroundColor: "#fff",
+    title: {
+        fontSize: "clamp(24px, 4vw, 52px)",
+        marginBottom: "10px",
+        color: COLORS.primaryText,
+    },
+    description: {
+        color: COLORS.secondaryText,
+        fontSize: "clamp(14px, 2.5vw, 18px)",
+        textAlign: "center",
+        fontWeight: "bold",
+        maxWidth: "70%",
+        marginBottom: "30px",
+    },
+    content: {
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        width: "100%",
+        gap: "20px",
+    },
+    mainImage: {
+        height: "clamp(40vh, 60vh, 85vh)",
+        width: "auto",
+        borderRadius: "24px",
+        // boxShadow: "0 20px 30px rgba(0, 0, 0, 0.5)",
+        filter: "grayscale(100%)",
+    },
+    sectionsContainer: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+    },
+    sectionCard: {
         borderRadius: "16px",
         display: "flex",
         flexDirection: "row",
         boxShadow: "0 10px 10px rgba(0, 0, 0, 0.2)",
-        padding: "10px",
-        width: "100%",
-        maxWidth: "500px",
+        padding: "clamp(10px, 2vw, 20px)",
+        width: "500px",
         margin: "0 auto",
-        transition: "background-color 0.3s ease",
+        cursor: "pointer",
+        transition: "background-color 0.3s ease, color 0.3s ease",
+        borderWidth: "1px",
+        borderStyle: "solid",
+    },
+    icon: {
+        width: "clamp(20px, 2.5vw, 40px)",
+        height: "auto",
+        marginRight: "10px",
+    },
+    sectionTitle: {
+        fontSize: "clamp(16px, 2.5vw, 18px)",
+    },
+    sectionContent: {
+        fontSize: "clamp(14px, 2.5vw, 16px)",
+        color: COLORS.secondaryText,
     },
 };
 

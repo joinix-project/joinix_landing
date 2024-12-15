@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import connectImg from '../assets/svg/ConnectorArrow.svg'
 import connectImgSecond from '../assets/svg/Connector.svg'
 import connectImgTwo from '../assets/svg/ConnectorTwo.svg'
+import COLORS from "../assets/colors";
 
 
 const RoadMap = () => {
-
     return (
         <div id="roadmap" style={styles.container}>
             <h1 style={{fontSize: '52px', marginBottom: '1px'}}>Roadmap</h1>
@@ -103,9 +103,9 @@ const RoadMap = () => {
                             bottom: '-195px'
                         }}
                     >
-                        <p style={styles.stageText}>Search for Investors</p>
+                        <p style={styles.stageText}>Prepare for Showing and Presenting App</p>
                         <p style={styles.aboutStageText}>
-                            Start investor outreach immediately with a pitch deck and MVP
+                            Set up demo-ready projects to showcase project creation, team management, and progress tracking.
                         </p>
                     </div>
 
@@ -117,9 +117,9 @@ const RoadMap = () => {
                             bottom: '20px'
                         }}
                     >
-                        <p style={styles.stageText}>Search for Investors</p>
+                        <p style={styles.stageText}>Planning and Creating App Architecture</p>
                         <p style={styles.aboutStageText}>
-                            Start investor outreach immediately with a pitch deck and MVP
+                            Develop a robust and scalable architecture for seamless app functionality.
                         </p>
                     </div>
 
@@ -131,9 +131,11 @@ const RoadMap = () => {
                             bottom: '130px'
                         }}
                     >
-                        <p style={styles.stageText}>Search for Investors</p>
+                        <p style={styles.stageText}>Creating and Implementing UI/UX
+                        </p>
                         <p style={styles.aboutStageText}>
-                            Start investor outreach immediately with a pitch deck and MVP
+                            Design and develop user-friendly interfaces to enhance the overall user experience.
+
                         </p>
                     </div>
                 </div>
@@ -149,9 +151,9 @@ const RoadMap = () => {
                             bottom: '-75px'
                         }}
                     >
-                        <p style={styles.stageText}>Search for Investors</p>
+                        <p style={styles.stageText}>Improving App After User Feedback</p>
                         <p style={styles.aboutStageText}>
-                            Start investor outreach immediately with a pitch deck and MVP
+                            Refine project creation and team management features based on user suggestions.
                         </p>
                     </div>
                 </div>
@@ -199,7 +201,6 @@ const RoadMap = () => {
                     <div style={styles.mainBlock}>
                         <p style={styles.mainStageText}>Feature Expansion</p>
                     </div>
-                    {/* Блок 1 */}
                     <div style={{position: 'relative'}}>
                         <div
                             style={{
@@ -305,9 +306,12 @@ const RoadMap = () => {
                             bottom: '257px'
                         }}
                     >
-                        <p style={styles.stageText}>Search for Investors</p>
+                        <p style={styles.stageText}>Task Creation, Assignment, and Tracking Tools
+                        </p>
                         <p style={styles.aboutStageText}>
-                            Start investor outreach immediately with a pitch deck and MVP
+                            Enable users to create tasks with titles, descriptions, and deadlines.
+                            Allow team leads to assign tasks to specific team members.
+                            Implement tracking tools to monitor task progress and completion status.
                         </p>
                     </div>
                     <div
@@ -318,9 +322,9 @@ const RoadMap = () => {
                             bottom: '-130px'
                         }}
                     >
-                        <p style={styles.stageText}>Search for Investors</p>
+                        <p style={styles.stageText}>AI Integration for Tasks</p>
                         <p style={styles.aboutStageText}>
-                            Start investor outreach immediately with a pitch deck and MVP
+                            Use AI to automate task creation, recommend task assignments based on skills and availability, and prioritize tasks to focus on critical activities.
                         </p>
                     </div>
                     <div
@@ -331,9 +335,10 @@ const RoadMap = () => {
                             bottom: '-245px'
                         }}
                     >
-                        <p style={styles.stageText}>Search for Investors</p>
+                        <p style={styles.stageText}>AI Integration for Projects
+                        </p>
                         <p style={styles.aboutStageText}>
-                            Start investor outreach immediately with a pitch deck and MVP
+                            Use AI to generate project plans with milestones, predict risks, recommend mitigations, and provide insights to optimize workflows.
                         </p>
                     </div>
 
@@ -345,9 +350,10 @@ const RoadMap = () => {
                             bottom: '-380px'
                         }}
                     >
-                        <p style={styles.stageText}>Search for Investors</p>
+                        <p style={styles.stageText}>Subscription Tiers
+                        </p>
                         <p style={styles.aboutStageText}>
-                            Start investor outreach immediately with a pitch deck and MVP
+                            Implement premium subscription plans for teams or organizations with advanced features like unlimited projects, analytics, and task management.
                         </p>
                     </div>
 
@@ -364,9 +370,10 @@ const RoadMap = () => {
                             bottom: '10px'
                         }}
                     >
-                        <p style={styles.stageText}>Search for Investors</p>
+                        <p style={styles.stageText}>Scaling to Other Countries</p>
                         <p style={styles.aboutStageText}>
-                            Start investor outreach immediately with a pitch deck and MVP
+                            Localized Marketing Campaigns
+                            Run region-specific marketing campaigns using local influencers, language-targeted ads, and partnerships with educational institutions.
                         </p>
                     </div>
                     <div
@@ -377,9 +384,10 @@ const RoadMap = () => {
                             bottom: '-100px'
                         }}
                     >
-                        <p style={styles.stageText}>Search for Investors</p>
+                        <p style={styles.stageText}>Diverse Community Building
+                        </p>
                         <p style={styles.aboutStageText}>
-                            Start investor outreach immediately with a pitch deck and MVP
+                            Foster a global community by showcasing projects with cross-country teams, promoting international networking, and highlighting diverse skills.
                         </p>
                     </div>
                 </div>
@@ -467,7 +475,7 @@ const styles = {
             "center",
         flexDirection: "column",
         alignItems: "center",
-        backgroundColor: "#f9f9f9",
+        backgroundColor: COLORS.background,
         padding: "20px",
     },
     iconRow: {
@@ -493,7 +501,7 @@ const styles = {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: "#f0f0f0",
+        backgroundColor: COLORS.accent,
         padding: "20px",
         borderRadius: "20px",
         width: "100%",
@@ -511,7 +519,7 @@ const styles = {
         alignItems: "center",
         width: "40%",
         // maxWidth: "00px",
-        backgroundColor: "#f0f0f0",
+        backgroundColor: COLORS.accent,
         padding: "20px",
         borderRadius: "20px",
         // gap: "40px",

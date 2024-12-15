@@ -7,6 +7,9 @@ import Header from "./components/Header";
 import Potential from "./screens/Potential";
 import Contacts from "./screens/Contacts";
 import RoadMap from "./screens/RoadMap";
+import RoadMapMobile from "./screens/RoadMapMobile";
+import useIsMobile from "./hooks/useIsMobile";
+import PotentialMob from "./screens/PotentialMob";
 
 
 const App = () => {
@@ -18,6 +21,7 @@ const App = () => {
 };
 
 const AppContent = () => {
+    const isMobile = useIsMobile()
 
   return (
       <div style={appContainerStyle}>
@@ -26,8 +30,8 @@ const AppContent = () => {
         <main style={mainContentStyle}>
             <Home/>
             <AboutCompany/>
-            <Potential/>
-            <RoadMap/>
+            {!isMobile ? <Potential/> : <PotentialMob/>}
+            {isMobile ? <RoadMapMobile/> : <RoadMap/>}
             <Contacts/>
         </main>
 
