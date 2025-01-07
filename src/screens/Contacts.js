@@ -27,10 +27,12 @@ const Contacts = () => {
         const [firstName, ...lastNameParts] = formData.fullName.split(" ");
         const lastName = lastNameParts.join(" ") || "";
 
+        const contact = `${formData.email || ""} ${formData.phone || ""}`.trim();
+
         const payload = {
             firstName: firstName || "Unknown",
             lastName: lastName,
-            contact: formData.email || formData.phone,
+            contact: contact,
             message: formData.message,
             contactType: formData.contactType,
         };
