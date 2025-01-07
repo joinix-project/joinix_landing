@@ -10,6 +10,7 @@ import RoadMap from "./screens/RoadMap";
 import RoadMapMobile from "./screens/RoadMapMobile";
 import useIsMobile from "./hooks/useIsMobile";
 import PotentialMob from "./screens/PotentialMob";
+import COLORS from "./assets/colors";
 
 
 const App = () => {
@@ -24,10 +25,10 @@ const AppContent = () => {
     const isMobile = useIsMobile()
 
   return (
-      <div style={appContainerStyle}>
+      <div style={styles.appContainerStyle}>
         <Header />
 
-        <main style={mainContentStyle}>
+        <main style={styles.mainContainer}>
             <Home/>
             <AboutCompany/>
             {!isMobile ? <Potential/> : <PotentialMob/>}
@@ -39,16 +40,18 @@ const AppContent = () => {
       </div>
   );
 };
+const styles = {
+    mainContainer:{
+        marginRight: "10vw",
+        marginLeft: "10vw",
+    },
+    appContainerStyle: {
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: COLORS.background,
+    }
+}
 
-const appContainerStyle = {
-  display: "flex",
-  flexDirection: "column",
-  minHeight: "100vh",
-};
 
-const mainContentStyle = {
-  flex: 1,
-    marginTop: '80px'
-};
 
 export default App;
