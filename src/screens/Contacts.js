@@ -3,13 +3,13 @@ import COLORS from "../assets/colors";
 import useIsMobile from "../hooks/useIsMobile";
 import axios from "axios";
 
-
 const Contacts = () => {
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
         phone: "",
         message: "",
+        contactType: "EMAIL",
     });
 
     const isMobile = useIsMobile();
@@ -21,40 +21,36 @@ const Contacts = () => {
             [name]: value,
         });
     };
-
-    const sendTelegramMessage = async (chatId, message) => {
-        const botToken = process.env.REACT_APP_TELEGRAM_BOT_TOKEN;
-        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-        try {
-            await axios.post(url, {
-                chat_id: chatId,
-                text: message,
-            });
-            alert("Message sent successfully!");
-        } catch (error) {
-            console.error("Error sending message to Telegram", error);
-            alert("Failed to send message.");
-        }
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const message = `📝 New Contact Form Submission:
-        \n👤 Name: ${formData.fullName}
-        \n📧 Email: ${formData.email}
-        \n📞 Phone: ${formData.phone || "Not provided"}
-        \n💬 Message: ${formData.message}`;
+        const [firstName, ...lastNameParts] = formData.fullName.split(" ");
+        const lastName = lastNameParts.join(" ") || "";
 
-        const chatId = process.env.REACT_APP_TELEGRAM_CHAT_ID;
-        sendTelegramMessage(chatId, message);
+        const contact = `${formData.email || ""} ${formData.phone || ""}`.trim();
+
+        const payload = {
+            firstName: firstName || "Unknown",
+            lastName: lastName,
+            contact: contact,
+            message: formData.message,
+            contactType: formData.contactType,
+        };
+
+        try {
+            await axios.post("https://api.joinix.info/forms/landing/contact", payload);
+            alert("Message sent successfully!");
+        } catch (error) {
+            console.error("Error sending message", error);
+            alert("Failed to send message.");
+        }
 
         setFormData({
             fullName: "",
             email: "",
             phone: "",
             message: "",
+            contactType: "EMAIL",
         });
     };
 
