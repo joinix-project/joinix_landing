@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import COLORS from "../assets/colors";
 import useIsMobile from "../hooks/useIsMobile";
 import axios from "axios";
+import InputFieldComponent from "../components/InputFieldComponent";
+import telegramIcon from "../assets/svg/telegramIcon.svg";
+import phoneScreen1 from "../assets/img/Screen1.png";
 
 const Contacts = () => {
     const [formData, setFormData] = useState({
@@ -53,351 +56,121 @@ const Contacts = () => {
     };
 
     return (
-        <div id="contacts" style={isMobile ? styles.containerMob : styles.container}>
-            <div style={styles.contactInfo}>
-                <h1 style={styles.title}>Contact Us</h1>
-                <p style={styles.subtext}>
-                    Email, or complete the form to contact us directly.
-                </p>
-                <p style={styles.infoText}>joinixproject@gmail.com</p>
-                <div style={styles.feedbackSection}>
-                    <h2 style={styles.subtitle}>Feedback and Suggestions</h2>
-                    <p style={styles.subtext}>
-                        We value your feedback and are continuously working to improve
-                        Joinix. Your input is crucial in shaping the future of Joinix.
-                    </p>
+        <div id="contacts" style={styles.container}>
+            <h2 style={styles.title}>
+                Get in Touch
+            </h2>
+            <div style={styles.form}>
+
+                <div style={styles.formBlock}>
+                    <div style={{display: "flex", flexDirection: "row",}}>
+                        <InputFieldComponent placeholder='Full name' inputTitle='Your name'/>
+                        <InputFieldComponent placeholder='Full name' inputTitle='Your name'/>
+                    </div>
+                    <div style={{display: "flex", flexDirection: "row",}}>
+                        <InputFieldComponent placeholder='Full name' inputTitle='Your name'/>
+                        <InputFieldComponent placeholder='Full name' inputTitle='Your name'/>
+                    </div>
+
+                    <div>
+                        <h4>
+                            Choose a communication method
+                        </h4>
+                        <div style={{
+                            border: "1px solid rgba(225, 225, 225, 0.3)",
+                            borderRadius: "10px",
+                            display: "flex",
+                            paddingLeft: "12px",
+                            paddingRight: "12px",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}>
+                            <img src={telegramIcon} alt="telegramIcon" style={{width: 'clamp(14px, 1.25vw, 24px)', height: 'clamp(14px, 1.25vw, 24px)'}}/>
+                            <p style={{fontSize: "clamp(10px, 0.8vw, 18px)", color: COLORS.lightGrayText, fontFamily: "Rubik, sans-serif", marginLeft: '2px'}}>
+                                Telegram
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div style={styles.mobileUI}>
-                <h1 style={styles.title}>Get in Touch</h1>
-                <p style={styles.subtext}>You can reach us anytime</p>
-                <form style={styles.form} onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        name="fullName"
-                        placeholder="Full Name"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        style={styles.input}
-                        required
-                    />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        style={styles.input}
-                        required
-                    />
-                    <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Phone Number"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        style={styles.input}
-                    />
-                    <textarea
-                        name="message"
-                        placeholder="How can we help?"
-                        value={formData.message}
-                        onChange={handleChange}
-                        style={styles.textarea}
-                        maxLength="120"
-                        required
-                    />
-                    <button type="submit" style={styles.button}>
-                        Submit
-                    </button>
-                </form>
+
+
+                <div style={styles.textBlock}>
+                    <p style={styles.infoText}>
+                        We value your feedback and are continuously working to improve Joinix. Your input is crucial in
+                        shaping the future of Joinix.
+                    </p>
+                    <div style={{marginTop: '32px'}}>
+                    <p style={styles.infoText}>
+                            Write to us:
+                        </p>
+                        <h3 style={styles.emailText}>
+                            joinixproject@gmail.com
+                        </h3>
+                    </div>
+                </div>
             </div>
         </div>
     );
 };
 
 const styles = {
-    containerMob: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        // gap: "40px",
-        backgroundColor: COLORS.background
-    },
     container: {
         display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        // gap: "40px",
-        marginTop: '50px',
-        marginRight: 16,
-        marginLeft: 16,
-        backgroundColor: COLORS.background
-    },
-    contactInfo: {
-        display: "flex",
         flexDirection: "column",
-        alignItems: "flex-start",
-        maxWidth: "600px",
-        padding: "clamp(40px, 5vw, 80px)",
-    },
-    title: {
-        fontSize: "clamp(24px, 4vw, 36px)",
-        marginBottom: "10px",
-    },
-    subtitle: {
-        fontSize: "clamp(18px, 3vw, 24px)",
-        marginBottom: "10px",
-    },
-    subtext: {
-        fontSize: "clamp(12px, 2.5vw, 14px)",
-        color: "gray",
-        marginBottom: "10px",
-    },
-    infoText: {
-        fontSize: "clamp(14px, 2.5vw, 16px)",
-        color: "gray",
-        marginBottom: "5px",
-    },
-    feedbackSection: {
-        marginTop: "20px",
-    },
-    mobileUI: {
-        backgroundColor: "#fff",
-        borderRadius: "16px",
-        boxShadow: "0 10px 10px rgba(0, 0, 0, 0.2)",
-        padding: "20px",
-        width: "70%",
-        margin: "0 auto",
-        marginBottom: '50px'
+        alignItems: "center",
     },
     form: {
         display: "flex",
+        flexDirection: "row",
+    },
+    fieldName: {
+        display: "flex",
+        flexDirection: "row"
+    },
+    inputStyle: {
+        display: "flex",
         flexDirection: "column",
-        gap: "15px",
     },
-    input: {
-        padding: "clamp(8px, 2vw, 10px)",
-        borderRadius: "12px",
-        border: "1px solid #ccc",
-        fontSize: "clamp(14px, 2.5vw, 16px)",
+    inputField:{
+        backgroundColor: "transparent",
+        border: "1px solid rgba(225, 225, 225, 0.3)",
+        borderRadius: "clamp(12px, 1.1vw, 20px)",
+        padding: "clamp(8px, 1.3vw, 12px)",
+        marginTop: '12px'
     },
-    textarea: {
-        padding: "clamp(8px, 2vw, 10px)",
-        borderRadius: "12px",
-        border: "1px solid #ccc",
-        fontSize: "clamp(14px, 2.5vw, 16px)",
-        resize: "none",
-        height: "clamp(80px, 10vw, 120px)",
+    title: {
+        color: COLORS.primaryText,
+        fontFamily: 'Rubik, sans-serif',
+        fontSize: "clamp(20px, 2vw, 40px)",
+        marginBottom: "20px",
     },
-    button: {
-        padding: "clamp(8px, 2vw, 10px) clamp(15px, 4vw, 20px)",
-        borderRadius: "8px",
-        border: "none",
-        backgroundColor: "#000",
-        color: "#fff",
-        fontSize: "clamp(14px, 2.5vw, 16px)",
-        cursor: "pointer",
+    infoText: {
+        color: COLORS.lightGrayText,
+        fontSize: "clamp(12px, 1.1vw, 20px)",
+        fontFamily: "Rubik, sans-serif",
+        textAlign: 'center',
+        marginBottom: "0px",
+        marginTop: '0px'
     },
+    emailText: {
+        color: COLORS.lightGrayText,
+        fontSize: "clamp(14px, 1.2vw, 24px)",
+        fontFamily: "Rubik, sans-serif",
+        textAlign: 'center',
+        marginBottom: "0px",
+        marginTop: '8px'
+    },
+    formBlock: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+    },
+    textBlock: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+    }
 };
 
 export default Contacts;
-//
-// import React, { useState } from "react";
-// import COLORS from "../assets/colors";
-// import useIsMobile from "../hooks/useIsMobile";
-// import axios from "axios";
-//
-// const Contacts = () => {
-//     const [formData, setFormData] = useState({
-//         fullName: "",
-//         email: "",
-//         phone: "",
-//         message: "",
-//         contactType: "EMAIL",
-//     });
-//
-//     const isMobile = useIsMobile();
-//
-//     const handleChange = (e) => {
-//         const { name, value } = e.target;
-//         setFormData({
-//             ...formData,
-//             [name]: value,
-//         });
-//     };
-//
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//
-//         const [firstName, ...lastNameParts] = formData.fullName.split(" ");
-//         const lastName = lastNameParts.join(" ") || "";
-//
-//         const payload = {
-//             firstName: firstName || "Unknown",
-//             lastName: lastName,
-//             contact: formData.email || formData.phone,
-//             message: formData.message,
-//             contactType: formData.contactType,
-//         };
-//
-//         try {
-//             await axios.post("https://api.joinix.info/forms/landing/contact", payload);
-//             alert("Message sent successfully!");
-//         } catch (error) {
-//             console.error("Error sending message", error);
-//             alert("Failed to send message.");
-//         }
-//
-//         setFormData({
-//             fullName: "",
-//             email: "",
-//             phone: "",
-//             message: "",
-//             contactType: "EMAIL",
-//         });
-//     };
-//
-//     return (
-//         <div id="contacts" style={isMobile ? styles.containerMob : styles.container}>
-//             <form style={styles.form} onSubmit={handleSubmit}>
-//                 <input
-//                     type="text"
-//                     name="fullName"
-//                     placeholder="Full Name"
-//                     value={formData.fullName}
-//                     onChange={handleChange}
-//                     style={styles.input}
-//                     required
-//                 />
-//                 <input
-//                     type="email"
-//                     name="email"
-//                     placeholder="Email"
-//                     value={formData.email}
-//                     onChange={handleChange}
-//                     style={styles.input}
-//                 />
-//                 <input
-//                     type="tel"
-//                     name="phone"
-//                     placeholder="Phone Number"
-//                     value={formData.phone}
-//                     onChange={handleChange}
-//                     style={styles.input}
-//                 />
-//                 <select
-//                     name="contactType"
-//                     value={formData.contactType}
-//                     onChange={handleChange}
-//                     style={styles.input}
-//                 >
-//                     <option value="EMAIL">Email</option>
-//                     <option value="PHONE">Phone</option>
-//                     <option value="TELEGRAM">Telegram</option>
-//                     <option value="WHATSAPP">WhatsApp</option>
-//                     <option value="LINKEDIN">LinkedIn</option>
-//                 </select>
-//                 <textarea
-//                     name="message"
-//                     placeholder="How can we help?"
-//                     value={formData.message}
-//                     onChange={handleChange}
-//                     style={styles.textarea}
-//                     maxLength="120"
-//                     required
-//                 />
-//                 <button type="submit" style={styles.button}>
-//                     Submit
-//                 </button>
-//             </form>
-//         </div>
-//     );
-// };
-//
-// const styles = {
-//     containerMob: {
-//         display: "flex",
-//         flexDirection: "column",
-//         justifyContent: "space-between",
-//         // gap: "40px",
-//         backgroundColor: COLORS.background
-//     },
-//     container: {
-//         display: "flex",
-//         flexDirection: "row",
-//         justifyContent: "space-between",
-//         // gap: "40px",
-//         marginTop: '50px',
-//         marginRight: 16,
-//         marginLeft: 16,
-//         backgroundColor: COLORS.background
-//     },
-//     contactInfo: {
-//         display: "flex",
-//         flexDirection: "column",
-//         alignItems: "flex-start",
-//         maxWidth: "600px",
-//         padding: "clamp(40px, 5vw, 80px)",
-//     },
-//     title: {
-//         fontSize: "clamp(24px, 4vw, 36px)",
-//         marginBottom: "10px",
-//     },
-//     subtitle: {
-//         fontSize: "clamp(18px, 3vw, 24px)",
-//         marginBottom: "10px",
-//     },
-//     subtext: {
-//         fontSize: "clamp(12px, 2.5vw, 14px)",
-//         color: "gray",
-//         marginBottom: "10px",
-//     },
-//     infoText: {
-//         fontSize: "clamp(14px, 2.5vw, 16px)",
-//         color: "gray",
-//         marginBottom: "5px",
-//     },
-//     feedbackSection: {
-//         marginTop: "20px",
-//     },
-//     mobileUI: {
-//         backgroundColor: "#fff",
-//         borderRadius: "16px",
-//         boxShadow: "0 10px 10px rgba(0, 0, 0, 0.2)",
-//         padding: "20px",
-//         width: "70%",
-//         margin: "0 auto",
-//         marginBottom: '50px'
-//     },
-//     form: {
-//         display: "flex",
-//         flexDirection: "column",
-//         gap: "15px",
-//     },
-//     input: {
-//         padding: "clamp(8px, 2vw, 10px)",
-//         borderRadius: "12px",
-//         border: "1px solid #ccc",
-//         fontSize: "clamp(14px, 2.5vw, 16px)",
-//     },
-//     textarea: {
-//         padding: "clamp(8px, 2vw, 10px)",
-//         borderRadius: "12px",
-//         border: "1px solid #ccc",
-//         fontSize: "clamp(14px, 2.5vw, 16px)",
-//         resize: "none",
-//         height: "clamp(80px, 10vw, 120px)",
-//     },
-//     button: {
-//         padding: "clamp(8px, 2vw, 10px) clamp(15px, 4vw, 20px)",
-//         borderRadius: "8px",
-//         border: "none",
-//         backgroundColor: "#000",
-//         color: "#fff",
-//         fontSize: "clamp(14px, 2.5vw, 16px)",
-//         cursor: "pointer",
-//     },
-// };
-//
-// export default Contacts;
