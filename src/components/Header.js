@@ -27,7 +27,7 @@ const styles = {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "20px 40px",
-        backgroundColor: COLORS.background,
+        backgroundColor: 'transparent',
     },
     logoContainer: {
         display: "flex",

@@ -11,37 +11,38 @@ import RoadMapMobile from "./screens/RoadMapMobile";
 import useIsMobile from "./hooks/useIsMobile";
 import PotentialMob from "./screens/PotentialMob";
 import COLORS from "./assets/colors";
-
+import backgroundImage from "./assets/img/background.png";
 
 const App = () => {
-  return (
-      <Router>
-        <AppContent />
-      </Router>
-  );
+    return (
+        <Router>
+            <AppContent />
+        </Router>
+    );
 };
 
 const AppContent = () => {
-    const isMobile = useIsMobile()
+    const isMobile = useIsMobile();
 
-  return (
-      <div style={styles.appContainerStyle}>
-        <Header />
+    return (
+        <div style={styles.appContainerStyle}>
+            <Header />
 
-        <main style={styles.mainContainer}>
-            <Home/>
-            <AboutCompany/>
-            {!isMobile ? <Potential/> : <PotentialMob/>}
-            {isMobile ? <RoadMapMobile/> : <RoadMap/>}
-            <Contacts/>
-        </main>
+            <main style={styles.mainContainer}>
+                <Home/>
+                <AboutCompany/>
+                {!isMobile ? <Potential/> : <PotentialMob/>}
+                {isMobile ? <RoadMapMobile/> : <RoadMap/>}
+                <Contacts/>
+            </main>
 
-        <Footer />
-      </div>
-  );
+            <Footer />
+        </div>
+    );
 };
+
 const styles = {
-    mainContainer:{
+    mainContainer: {
         marginRight: "10vw",
         marginLeft: "10vw",
     },
@@ -49,9 +50,13 @@ const styles = {
         display: "flex",
         flexDirection: "column",
         backgroundColor: COLORS.background,
-    }
-}
-
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover", // Масштабирует изображение, чтобы покрыть весь контейнер
+        backgroundRepeat: "repeat", // Не повторяет изображение
+        backgroundPosition: "center top", // Позиционирует изображение сверху по центру
+        minHeight: "100vh", // Устанавливает минимальную высоту в 100% от высоты экрана
+    },
+};
 
 
 export default App;

@@ -25,6 +25,7 @@ const styles = {
     inputStyle: {
         display: "flex",
         flexDirection: "column",
+        width: "100%",
     },
     fieldName: {
         display: "flex",
