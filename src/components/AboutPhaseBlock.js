@@ -21,8 +21,14 @@ const  styles = {
         flexDirection: "column",
         border: "1px solid rgba(225, 225, 225, 0.3)",
         borderRadius: "10px",
-        padding: "30px",
-        marginBottom: "36px",
+        // paddingTop: "12px",
+        // paddingBottom: "12px",
+        paddingLeft: "26px",
+        paddingRight: "26px",
+        marginBottom: "24px",
+        height: "100px",
+        width: '42vw',
+
     },
     phaseText: {
         color: COLORS.primaryText,

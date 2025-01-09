@@ -9,7 +9,6 @@ import Contacts from "./screens/Contacts";
 import RoadMap from "./screens/RoadMap";
 import RoadMapMobile from "./screens/RoadMapMobile";
 import useIsMobile from "./hooks/useIsMobile";
-import PotentialMob from "./screens/PotentialMob";
 import COLORS from "./assets/colors";
 import backgroundImage from "./assets/img/background.png";
 
@@ -31,7 +30,7 @@ const AppContent = () => {
             <main style={styles.mainContainer}>
                 <Home/>
                 <AboutCompany/>
-                {!isMobile ? <Potential/> : <PotentialMob/>}
+                <Potential/>
                 {isMobile ? <RoadMapMobile/> : <RoadMap/>}
                 <Contacts/>
             </main>

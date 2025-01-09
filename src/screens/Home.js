@@ -5,17 +5,17 @@ import phoneScreen2 from "../assets/img/Screen2.png"
 import phoneScreen3 from "../assets/img/Screen3.png"
 
 const Home = () => {
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setScreenWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    //
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         setScreenWidth(window.innerWidth);
+    //     };
+    //
+    //     window.addEventListener('resize', handleResize);
+    //
+    //     return () => window.removeEventListener('resize', handleResize);
+    // }, []);
 
     return (
         <div style={styles.container}>
@@ -36,7 +36,7 @@ const Home = () => {
                 <img src={phoneScreen2} alt="Phone Mockup 2" style={styles.phoneMiddle}/>
                 <img src={phoneScreen3} alt="Phone Mockup 3" style={styles.phone}/>
             </div>
-            <div style={{...styles.redLine, width: screenWidth, marginLeft: '-10vw'}}></div>
+            <div style={{...styles.redLine, width: '100%'}}></div>
         </div>
     );
 };

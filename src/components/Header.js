@@ -26,7 +26,7 @@ const styles = {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "20px 40px",
+        padding: "clamp(10px, 1.5vw, 20px) clamp(20px, 3vw, 40px)", // Уменьшенное центральное значение
         backgroundColor: 'transparent',
     },
     logoContainer: {
@@ -34,37 +34,36 @@ const styles = {
         alignItems: "center",
     },
     logo: {
-        height: "30px",
-        marginRight: "10px",
+        height: "clamp(24px, 3vw, 48px)", // Уменьшенное центральное значение
+        marginRight: "clamp(5px, 0.5vw, 10px)",
     },
     logoText: {
-        fontSize: "20px",
+        fontSize: "clamp(12px, 1.5vw, 20px)", // Уменьшенное центральное значение
         fontWeight: "400",
         fontFamily: 'Rubik, sans-serif',
         color: "#fff",
     },
     nav: {
         display: "flex",
-        gap: "20px",
+        gap: "clamp(10px, 1.5vw, 20px)", // Уменьшенное центральное значение
     },
     navLink: {
         color: "#fff",
         textDecoration: "none",
-        fontSize: "15px",
+        fontSize: "clamp(12px, 1.2vw, 15px)", // Уменьшенное центральное значение
         fontWeight: "400",
         fontFamily: 'Rubik, sans-serif',
     },
     downloadButton: {
         backgroundColor: COLORS.secondaryBackground,
         color: "#fff",
-        padding: "16px 28px",
+        padding: "clamp(8px, 1vw, 16px) clamp(12px, 1.5vw, 28px)", // Уменьшенное центральное значение
         border: "none",
-        borderRadius: "30px",
-        fontSize: "15px", // Адаптивный размер кнопки
+        borderRadius: "clamp(15px, 2vw, 30px)", // Уменьшенное центральное значение
+        fontSize: "clamp(12px, 1vw, 15px)", // Уменьшенное центральное значение
         fontWeight: "400",
         fontFamily: 'Rubik, sans-serif',
         cursor: "pointer",
-
     },
 };
 

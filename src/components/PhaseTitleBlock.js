@@ -1,9 +1,9 @@
 import React from "react";
 import COLORS from "../assets/colors";
 
-const PhaseTitleBlock = ({phaseTitle}) => {
+const PhaseTitleBlock = ({phaseTitle, style}) => {
     return (
-        <div style={styles.mainBlock}>
+        <div style={{...styles.mainBlock, ...style}}>
             <h3 style={styles.titleText}>
                 {phaseTitle}
             </h3>
@@ -17,10 +17,12 @@ const  styles = {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: COLORS.accent,
-        padding: "30px",
+        paddingLeft: "30px",
+        paddingRight: "30px",
         borderRadius: "10px",
-        maxWidth: '22vw',
-        marginBottom: "36px",
+        width: '22vw',
+        marginBottom: "32px",
+        height: "100px",
     },
     titleText: {
         color: COLORS.primaryText,

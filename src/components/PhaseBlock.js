@@ -1,9 +1,9 @@
 import React from "react";
 import COLORS from "../assets/colors";
 
-const PhaseBlock = ({title, infoText}) => {
+const PhaseBlock = ({title, infoText, style}) => {
     return (
-        <div style={styles.phaseBlock}>
+        <div style={{...styles.phaseBlock, ...style}}>
             <h4 style={styles.phaseText}>
                 {title}
             </h4>
@@ -21,9 +21,13 @@ const  styles = {
         flexDirection: "column",
         border: "1px solid rgba(225, 225, 225, 0.3)",
         borderRadius: "10px",
-        padding: "30px",
-        maxWidth: '22vw',
-        marginBottom: "36px",
+        // paddingTop: "12px",
+        // paddingBottom: "12px",
+        paddingLeft: "26px",
+        paddingRight: "26px",
+        width: '22vw',
+        marginBottom: "24px",
+        height: "100px",
     },
     phaseText: {
         color: COLORS.primaryText,

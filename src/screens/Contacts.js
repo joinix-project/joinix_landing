@@ -122,10 +122,22 @@ const Contacts = () => {
                             joinixproject@gmail.com
                         </h3>
                     </div>
-                    <div>
-                        <img src={emailCircle} alt="emailCircle" style={styles.contactLogo}/>
-                        <img src={telegramCircle} alt="telegramCircle" style={styles.contactLogo}/>
-                        <img src={instagramCircle} alt="instagramCircle" style={styles.contactLogo}/>
+                    <div style={{display: "flex", gap: '14px'}}>
+                        <button
+                            onClick={() => alert("Email button clicked")}
+                            style={{ ...styles.iconButton }}
+                        >
+                            <img src={emailCircle} alt="emailCircle" style={styles.contactLogo}/>
+                        </button>
+
+                        <button
+                            onClick={() => alert("Email button clicked")}
+                            style={{ ...styles.iconButton }}
+                        >
+                            <img src={telegramCircle} alt="telegramCircle" style={styles.contactLogo}/>
+                        </button>
+
+
                     </div>
                 </div>
 
@@ -144,6 +156,15 @@ const styles = {
     contactTypeLogo: {
         width: 'clamp(14px, 1.25vw, 24px)',
         height: 'clamp(14px, 1.25vw, 24px)'
+    },
+    iconButton: {
+        backgroundColor: "transparent", // Прозрачный фон
+        border: "none", // Без рамки
+        cursor: "pointer", // Курсор в виде указателя
+        padding: "0", // Без отступов
+        display: "flex", // Для выравнивания содержимого
+        alignItems: "center",
+        justifyContent: "center",
     },
     contactButton: {
         border: "1px solid rgba(225, 225, 225, 0.3)",
