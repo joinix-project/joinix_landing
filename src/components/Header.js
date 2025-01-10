@@ -1,199 +1,135 @@
-import React, { useState, useEffect } from "react";
-import { Link as ScrollLink } from "react-scroll";
+import React, { useEffect, useState } from "react";
+import COLORS from "../assets/colors";
+import logo from "../assets/svg/logoSvg.svg";
 import useIsMobile from "../hooks/useIsMobile";
-import SoonSVG from "../assets/svg/time.svg";
+import Modal from "./Modal";
+import MobileModal from "./MobileModal";
 
 const Header = () => {
-    const [isVisible, setIsVisible] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const isMobile = useIsMobile();
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    const handleScroll = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
+
     useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-
-            if (currentScrollY > lastScrollY && currentScrollY > 50) {
-                setIsVisible(false);
-            } else {
-                setIsVisible(true);
-            }
-
-            setLastScrollY(currentScrollY);
-        };
-
-        window.addEventListener("scroll", handleScroll);
+        if (isModalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
 
         return () => {
-            window.removeEventListener("scroll", handleScroll);
+            document.body.style.overflow = "";
         };
-    }, [lastScrollY]);
-
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
+    }, [isModalOpen]);
 
     return (
-        <>
-            <header
-                style={{
-                    ...styles.header,
-                    height: isMobile && "20px",
-                    opacity: isVisible ? "1" : "0",
-                    pointerEvents: isVisible ? "auto" : "none",
-                    justifyContent: isMobile && "space-between",
-                }}
-            >
-                <div style={styles.logo}>Joinix</div>
-                <div style={{ display: "flex", alignItems: "center", flexDirection: "row" }}>
-                    {!isMobile && (
-                        <nav>
-                            <ul style={styles.nav}>
-                                <ScrollLink to="home" smooth={true} duration={500} offset={-70} style={styles.buttonStyles}>
-                                    Home
-                                </ScrollLink>
-                                <ScrollLink to="about" smooth={true} duration={500} offset={-70} style={styles.buttonStyles}>
-                                    About
-                                </ScrollLink>
-                                <ScrollLink to="potential" smooth={true} duration={500} offset={-70} style={styles.buttonStyles}>
-                                    Potential
-                                </ScrollLink>
-                                <ScrollLink to="roadmap" smooth={true} duration={500} offset={-70} style={styles.buttonStyles}>
-                                    Roadmap
-                                </ScrollLink>
-                                <ScrollLink to="contacts" smooth={true} duration={500} offset={-70} style={styles.buttonStyles}>
-                                    Contacts
-                                </ScrollLink>
-                            </ul>
-                        </nav>
-                    )}
-                    <button style={isMobile ? styles.buttonMob : styles.button} onClick={openModal}>
-                        DOWNLOAD APP
+        <header style={styles.header}>
+            <div style={styles.logoContainer}>
+                <img src={logo} alt="Joinix Logo" style={styles.logo} />
+                <span style={styles.logoText}>Joinix</span>
+            </div>
+            {!isMobile && (
+                <nav style={styles.nav}>
+                    <button
+                        style={styles.navLink}
+                        onClick={() => handleScroll("home")}
+                    >
+                        Home
                     </button>
-                </div>
-            </header>
-
-            {isModalOpen && (
-                <div style={styles.modalOverlay} onClick={closeModal}>
-                    <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-                        <img src={SoonSVG} alt="Coming Soon Icon" style={styles.modalIcon} />
-                        <p style={styles.modalText}>Coming Soon!</p>
-                        <div style={styles.buttonsWrapper}>
-                            <button style={styles.modalButton} onClick={closeModal}>
-                                Back
-                            </button>
-                            <button style={styles.modalButton} onClick={closeModal}>
-                                Contact us
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    <button
+                        style={styles.navLink}
+                        onClick={() => handleScroll("about")}
+                    >
+                        About
+                    </button>
+                    <button
+                        style={styles.navLink}
+                        onClick={() => handleScroll("potential")}
+                    >
+                        Potential
+                    </button>
+                    <button
+                        style={styles.navLink}
+                        onClick={() => handleScroll("roadmap")}
+                    >
+                        Roadmap
+                    </button>
+                    <button
+                        style={styles.navLink}
+                        onClick={() => handleScroll("contacts")}
+                    >
+                        Contacts
+                    </button>
+                </nav>
             )}
-        </>
+            <button style={styles.downloadButton} onClick={openModal}>
+                Download App
+            </button>
+            {isMobile ? (
+                <MobileModal isOpen={isModalOpen} onClose={closeModal} />
+            ) : (
+                <Modal isOpen={isModalOpen} onClose={closeModal} />
+            )}
+        </header>
     );
 };
 
 const styles = {
     header: {
-        position: "fixed",
-        top: "0",
-        left: "0",
-        right: "0",
-        height: "50px",
         display: "flex",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         alignItems: "center",
-        padding: "1rem 2rem",
-        backgroundColor: "#fff",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-        zIndex: 1000,
-        transition: "opacity 0.5s ease-in-out",
+        padding: "clamp(10px, 1.5vw, 20px) clamp(20px, 3vw, 40px)",
+        backgroundColor: "transparent",
     },
-    buttonStyles: {
-        textDecoration: "none",
-        color: "black",
-        fontWeight: "bold",
-        cursor: "pointer",
+    logoContainer: {
+        display: "flex",
+        alignItems: "center",
     },
     logo: {
-        fontSize: "1.5rem",
-        fontWeight: "bold",
+        height: "clamp(24px, 3vw, 48px)",
+        marginRight: "clamp(5px, 0.5vw, 10px)",
+    },
+    logoText: {
+        fontSize: "clamp(12px, 1.5vw, 20px)",
+        fontWeight: "400",
+        fontFamily: "Rubik, sans-serif",
+        color: "#fff",
     },
     nav: {
         display: "flex",
-        listStyle: "none",
-        gap: "1rem",
+        gap: "clamp(10px, 1.5vw, 20px)",
     },
-    button: {
-        backgroundColor: "black",
-        color: "white",
-        padding: "1rem 1rem",
+    navLink: {
+        background: "none",
         border: "none",
-        borderRadius: "8px",
+        color: "#fff",
+        fontSize: "clamp(12px, 1.2vw, 15px)",
+        fontWeight: "400",
+        fontFamily: "Rubik, sans-serif",
+        textDecoration: "none",
         cursor: "pointer",
-        marginLeft: "30px",
     },
-    buttonMob: {
-        backgroundColor: "black",
-        color: "white",
-        padding: "10px 10px",
+    downloadButton: {
+        backgroundColor: COLORS.secondaryBackground,
+        color: "#fff",
+        padding: "clamp(8px, 1vw, 16px) clamp(12px, 1.5vw, 28px)",
         border: "none",
-        borderRadius: "8px",
+        borderRadius: "clamp(15px, 2vw, 30px)",
+        fontSize: "clamp(12px, 1vw, 15px)",
+        fontWeight: "400",
+        fontFamily: "Rubik, sans-serif",
         cursor: "pointer",
-        fontSize: "10px",
-    },
-    modalOverlay: {
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 1000,
-    },
-    modalContent: {
-        backgroundColor: "#ffffff",
-        padding: "20px",
-        borderRadius: "10px",
-        textAlign: "center",
-        width: "80%",
-        maxWidth: "300px",
-        boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-    },
-    modalIcon: {
-        width: "50px",
-        height: "50px",
-        marginBottom: "15px",
-    },
-    modalText: {
-        fontSize: "18px",
-        fontWeight: "bold",
-        color: "#333333",
-        marginBottom: "15px",
-    },
-    buttonsWrapper: {
-        display: "flex",
-        gap: "10px",
-        width: "100%",
-        marginTop: "15px",
-    },
-    modalButton: {
-        flex: 1,
-        padding: "10px",
-        backgroundColor: "black",
-        color: "#ffffff",
-        border: "none",
-        borderRadius: "5px",
-        cursor: "pointer",
-        fontSize: "16px",
-        fontWeight: "bold",
     },
 };
 

@@ -1,9 +1,11 @@
 const COLORS = {
-    "background": "#ffffff",   // White background
-    "primaryText": "#030303",  // Dark primary text
-    "secondaryText": "#7b7b7b", // Gray secondary text
-    "accent": "#fcfcfc",        // Accent color (light grayish-beige)
-    "border": "#4e4e4e"         // Border color (dark gray)
+    "background": "#171717",
+    "secondaryBackground": "#252525CC",
+    "primaryText": "#FFF",
+    "lightGrayText": '#E1E1E1',
+    "secondaryText": 'gray',
+    "accent": "#D92D20",
+    "border": "#4e4e4e"
 };
 
 export default COLORS;
