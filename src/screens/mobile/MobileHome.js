@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from "react";
-import COLORS from "../assets/colors";
-import phoneScreen1 from "../assets/img/Screen1.png"
-import phoneScreen2 from "../assets/img/Screen2.png"
-import phoneScreen3 from "../assets/img/Screen3.png"
+import COLORS from "../../assets/colors";
+import phoneScreen1 from "../../assets/img/Screen4.png"
+import phoneScreen2 from "../../assets/img/Screen5.png"
+import phoneScreen3 from "../../assets/img/Screenshot1.png"
+import Modal from "../../components/Modal";
+import MobileModal from "../../components/MobileModal";
 
-const Home = () => {
-    // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-    //
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         setScreenWidth(window.innerWidth);
-    //     };
-    //
-    //     window.addEventListener('resize', handleResize);
-    //
-    //     return () => window.removeEventListener('resize', handleResize);
-    // }, []);
+const MobileHome = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+
+
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isModalOpen]);
     return (
         <div style={styles.container}>
             <div style={{marginBottom: "28px",}}>
@@ -27,16 +34,14 @@ const Home = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morem ipsum dolor sit amet, adipiscing.
             </p>
             <div style={styles.buttonsContainer}>
-                <button style={styles.buttonStyles}>Download App</button>
-                <button style={{...styles.buttonStyles, backgroundColor: COLORS.secondaryBackground}}>Learn More
-                </button>
+                <button style={styles.buttonStyles} onClick={openModal}>Download App</button>
             </div>
             <div style={styles.phoneMockups}>
                 <img src={phoneScreen1} alt="Phone Mockup 1" style={styles.phone}/>
                 <img src={phoneScreen2} alt="Phone Mockup 2" style={styles.phoneMiddle}/>
                 <img src={phoneScreen3} alt="Phone Mockup 3" style={styles.phone}/>
             </div>
-            <div style={{...styles.redLine, width: '100%'}}></div>
+            <MobileModal isOpen={isModalOpen} onClose={closeModal} />
         </div>
     );
 };
@@ -44,10 +49,10 @@ const Home = () => {
 const styles = {
     container: {
         textAlign: "center",
-        marginBottom: '150px'
+        marginBottom: '100px'
     },
     title: {
-        fontSize: "clamp(48px, 5vw, 96px)",
+        fontSize: "34px",
         fontFamily: 'Rubik, sans-serif',
         fontWeight: "400",
         marginBottom: "0px",
@@ -55,7 +60,7 @@ const styles = {
         color: COLORS.primaryText,
     },
     secondaryText: {
-        fontSize: "clamp(16px, 1.2vw, 20px)",
+        fontSize: "15px",
         fontFamily: 'Rubik, sans-serif',
         fontWeight: "400",
         color: COLORS.secondaryText,
@@ -70,10 +75,10 @@ const styles = {
     buttonStyles: {
         backgroundColor: COLORS.accent,
         color: "#fff",
-        padding: "16px 28px",
+        padding: "12px 12px",
         border: "none",
         borderRadius: "30px",
-        fontSize: "clamp(10px, 1vw, 18px)",
+        fontSize: "14px",
         fontWeight: "400",
         fontFamily: 'Rubik, sans-serif',
         cursor: "pointer",
@@ -81,13 +86,14 @@ const styles = {
     phoneMockups: {
         display: "flex",
         justifyContent: "space-between",
+        marginTop: '20px'
     },
     phone: {
-        height: "clamp(300px, 30vw, 547px)",
+        height: "clamp(150px, 27vh, 400px)"
     },
     phoneMiddle: {
-        height: "clamp(250px, 25vw, 437px)",
-        alignSelf: 'flex-end',
+        height: "clamp(150px, 27vh, 400px)",
+        marginTop: '24px',
     },
     redLine: {
         height: "1px",
@@ -95,4 +101,4 @@ const styles = {
     },
 };
 
-export default Home;
+export default MobileHome;

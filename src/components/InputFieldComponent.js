@@ -1,25 +1,28 @@
-import React, {Component} from "react";
+import React from "react";
 import COLORS from "../assets/colors";
 
-const InputFieldComponent = ({inputTitle, placeholder}) => {
+const InputFieldComponent = ({ inputTitle, placeholder, name, value, onChange }) => {
     return (
         <div style={styles.inputStyle}>
             <div style={styles.fieldName}>
                 <h4 style={styles.infoText}>
                     {inputTitle}
                 </h4>
-                <h4 style={{...styles.infoText, color: COLORS.accent,}}>
+                <h4 style={{ ...styles.infoText, color: COLORS.accent }}>
                     *
                 </h4>
             </div>
             <input
-                type='text'
+                type="text"
                 placeholder={placeholder}
+                name={name}
+                value={value}
+                onChange={onChange}
                 style={styles.inputField}
             />
         </div>
-    )
-}
+    );
+};
 
 const styles = {
     inputStyle: {
@@ -31,12 +34,13 @@ const styles = {
         display: "flex",
         flexDirection: "row"
     },
-    inputField:{
+    inputField: {
         backgroundColor: "transparent",
         border: "1px solid rgba(225, 225, 225, 0.3)",
         borderRadius: "clamp(12px, 1.1vw, 20px)",
         padding: "clamp(8px, 1.3vw, 12px)",
-        marginTop: '12px'
+        marginTop: '10px',
+        color: '#fff'
     },
     infoText: {
         color: COLORS.lightGrayText,
@@ -46,6 +50,6 @@ const styles = {
         marginBottom: "0px",
         marginTop: '0px'
     },
-}
+};
 
-export default InputFieldComponent
+export default InputFieldComponent;

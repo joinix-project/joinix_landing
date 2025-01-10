@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import COLORS from "../assets/colors";
-import lineConnection from "../assets/svg/ConnectorTwo.svg";
-import lineSingleConnection from "../assets/svg/Connector.svg";
-import PhaseBlock from "../components/PhaseBlock";
-import PhaseTitleBlock from "../components/PhaseTitleBlock";
-import AboutPhaseBlock from "../components/AboutPhaseBlock";
-import phoneScreen1 from "../assets/img/Screen1.png";
+import COLORS from "../../assets/colors";
+import lineConnection from "../../assets/svg/ConnectorTwo.svg";
+import lineSingleConnection from "../../assets/svg/Connector.svg";
+import PhaseBlock from "../../components/PhaseBlock";
+import PhaseTitleBlock from "../../components/PhaseTitleBlock";
+import AboutPhaseBlock from "../../components/AboutPhaseBlock";
+import phoneScreen1 from "../../assets/img/Screen1.png";
 
 const RoadMap = () => {
     return (
@@ -169,6 +169,7 @@ const styles = {
         justifyContent: "center",
         flexDirection: "column",
         alignItems: "center",
+        marginBottom: "70px",
     },
     title: {
         color: COLORS.primaryText,

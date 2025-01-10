@@ -1,9 +1,9 @@
-import COLORS from "../assets/colors";
+import COLORS from "../../assets/colors";
 import React, { useState } from "react";
-import arrowUp from "../assets/svg/arrowUp.svg";
-import arrowDown from "../assets/svg/arrowDown.svg";
+import arrowUp from "../../assets/svg/arrowUp.svg";
+import arrowDown from "../../assets/svg/arrowDown.svg";
 
-const Potential = () => {
+const MobilePotential = () => {
     const [activeIndex, setActiveIndex] = useState(null);
 
     const items = [
@@ -44,9 +44,9 @@ const Potential = () => {
                                 {item.title}
                             </span>
                             {activeIndex === index ? (
-                                <img src={arrowUp} alt="arrowUp" style={{ width: '32px', height: '32px' }} />
+                                <img src={arrowUp} alt="arrowUp" style={{ width: '24px', height: '24px' }} />
                             ) : (
-                                <img src={arrowDown} alt="arrowDown" style={{ width: '32px', height: '32px' }} />
+                                <img src={arrowDown} alt="arrowDown" style={{ width: '24px', height: '24px' }} />
                             )}
                         </div>
                         {activeIndex === index && (
@@ -66,27 +66,27 @@ const styles = {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        marginBottom: "150px",
+        marginBottom: "100px",
     },
     title: {
         color: COLORS.primaryText,
         fontFamily: "Rubik, sans-serif",
-        fontSize: "clamp(20px, 2vw, 40px)",
-        marginBottom: "40px",
+        fontSize: "20px",
+        marginBottom: "16px",
     },
     list: {
-        width: "80%",
-        borderRadius: "20px",
+        width: "95%",
+        borderRadius: "10px",
         border: "1px solid rgba(225, 225, 225, 0.3)",
-        paddingLeft: "16px",
-        paddingRight: "16px",
+        paddingLeft: "12px",
+        paddingRight: "12px",
     },
     item: {
-        padding: "20px",
-        marginLeft: "-16px",
-        marginRight: "-16px",
-        paddingLeft: "16px",
-        paddingRight: "16px",
+        padding: "12px",
+        marginLeft: "-12px",
+        marginRight: "-12px",
+        paddingLeft: "12px",
+        paddingRight: "12px",
     },
     itemHeader: {
         display: "flex",
@@ -98,7 +98,7 @@ const styles = {
         color: COLORS.primaryText,
         fontFamily: "Rubik, sans-serif",
         fontWeight: "bold",
-        fontSize: "18px",
+        fontSize: "15px",
         marginRight: "15px",
     },
     itemTitle: {
@@ -106,14 +106,14 @@ const styles = {
         fontWeight: "600",
         color: COLORS.primaryText,
         fontFamily: "Rubik, sans-serif",
-        fontSize: "clamp(14px, 1.25vw, 24px)",
+        fontSize: "15px",
     },
     itemDescription: {
-        marginTop: "10px",
+        marginTop: "12px",
         color: COLORS.lightGrayText,
         fontFamily: "Rubik, sans-serif",
-        fontSize: "clamp(12px, 1.1vw, 20px)",
+        fontSize: "15px",
     },
 };
 
-export default Potential;
+export default MobilePotential;

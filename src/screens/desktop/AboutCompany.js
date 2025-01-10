@@ -1,8 +1,26 @@
-import React from "react";
-import COLORS from "../assets/colors";
-import phoneScreen1 from "../assets/img/Screen1.png";
+import React, {useEffect, useState} from "react";
+import COLORS from "../../assets/colors";
+import phoneScreen1 from "../../assets/img/Screen1.png";
+import Modal from "../../components/Modal";
 
 const AboutCompany = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+
+
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isModalOpen]);
 
     return (
         <div id="about" style={styles.container}>
@@ -42,11 +60,12 @@ const AboutCompany = () => {
                         share files seamlessly in one place, boosting efficiency.
                     </p>
                 </div>
-                <button style={styles.buttonStyles}>Download App</button>
+                <button style={styles.buttonStyles} onClick={openModal}>Download App</button>
             </div>
             <div style={styles.phoneMockup}>
                 <img src={phoneScreen1} alt="Phone Mockup 1" style={styles.phone}/>
             </div>
+            <Modal isOpen={isModalOpen} onClose={closeModal} />
         </div>
     );
 };
@@ -71,8 +90,8 @@ const styles = {
     infoBlock: {
         display: "flex",
         flexDirection: "column",
-        gap: "12px", // Устанавливаем отступы между элементами внутри блока
-        marginBottom: "40px", // Отделяем блоки друг от друга
+        gap: "12px",
+        marginBottom: "40px",
     },
     title: {
         color: COLORS.primaryText,
