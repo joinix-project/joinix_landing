@@ -33,6 +33,7 @@ const Contacts = () => {
         LINKEDIN: 'LINKEDIN',
     };
     const [method, setMethod] = useState("email");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleMethodChange = (newMethod) => {
         setMethod(newMethod);
@@ -53,6 +54,7 @@ const Contacts = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
         const payload = {
             firstName: formData.firstName || "Unknown",
@@ -61,7 +63,6 @@ const Contacts = () => {
             message: formData.message,
             contactType: ContactMethods[method.toUpperCase()],
         };
-        console.log(payload);
 
         try {
             await axios.post("https://api.joinix.info/forms/landing/contact", payload);
@@ -69,16 +70,26 @@ const Contacts = () => {
         } catch (error) {
             console.error("Error sending message", error);
             alert("Failed to send message.");
+        } finally {
+            setIsSubmitting(false);
+            setFormData({
+                firstName: "",
+                lastName: "",
+                contact: "",
+                message: "",
+                contactType: "",
+            });
         }
-
-        setFormData({
-            firstName: "",
-            lastName: "",
-            contact: "",
-            message: "",
-            contactType: "",
-        });
     };
+
+    const isFormValid = () => {
+        return (
+            formData.firstName.trim() !== "" &&
+            formData.contact.trim() !== "" &&
+            formData.message.trim() !== ""
+        );
+    };
+
 
     return (
         <div id="contacts" style={styles.container}>
@@ -113,7 +124,7 @@ const Contacts = () => {
                             />
                         ) : method === "phone" || method === "whatsapp" ? (
                             <InputFieldComponent
-                                placeholder="000 000 000"
+                                placeholder="+00 000 000 000"
                                 inputTitle="Your phone"
                                 name="contact"
                                 value={formData.contact}
@@ -244,7 +255,17 @@ const Contacts = () => {
                         </div>
 
                     </div>
-                    <button style={styles.buttonStyles} onClick={handleSubmit}>Submit</button>
+                    <button
+                        style={{
+                            ...styles.buttonStyles,
+                            backgroundColor: isFormValid() ? COLORS.accent : COLORS.secondaryBackground,
+                            cursor: isFormValid() && !isSubmitting ? "pointer" : "not-allowed",
+                        }}
+                        onClick={handleSubmit}
+                        disabled={!isFormValid() || isSubmitting}
+                    >
+                        {isSubmitting ? "Submitting..." : "Submit"}
+                    </button>
                 </div>
                 <div style={styles.divider}></div>
                 <div style={styles.textBlock}>

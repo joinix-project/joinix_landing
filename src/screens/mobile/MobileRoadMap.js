@@ -68,21 +68,27 @@ const MobileRoadMap = () => {
 
             {roadmapData.map((chapter, index) => (
                 <div style={{width: "100%", display: "flex", flexDirection: "column"}}>
-                    {openPhase !== index ? (<div key={index} style={styles.phaseBlock} onClick={() => togglePhase(index)}>
-                        <p style={styles.phaseChapter}>
-                            {chapter.chapter}
-                        </p>
-                        <h2 style={styles.phaseTitle}>
-                            {chapter.title}
-                        </h2>
-                        <p style={styles.countPhase}>
-                            {chapter.phases.length} phases
-                        </p>
-                    </div>) : (
-                        <h2 style={{...styles.phaseTitle, marginBottom: '12px', marginTop: '16px'}}>
+                    {openPhase !== index ? (
+                        <div key={index} style={styles.phaseBlock} onClick={() => togglePhase(index)}>
+                            <p style={styles.phaseChapter}>
+                                {chapter.chapter}
+                            </p>
+                            <h2 style={styles.phaseTitle}>
+                                {chapter.title}
+                            </h2>
+                            <p style={styles.countPhase}>
+                                {chapter.phases.length} phases
+                            </p>
+                        </div>
+                    ) : (
+                        <h2
+                            style={{ ...styles.phaseTitle, marginBottom: "12px", marginTop: "16px", cursor: "pointer" }}
+                            onClick={() => togglePhase(index)}
+                        >
                             {chapter.title}
                         </h2>
                     )}
+
                     {openPhase === index && (
                         <div style={styles.details}>
                             {chapter.phases.map((phase, i) => (
