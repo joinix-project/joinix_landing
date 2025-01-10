@@ -1,4 +1,3 @@
-<svg width="193" height="274" viewBox="0 0 193 274" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0 137H61C74.2548 137 85 147.745 85 161V242C85 255.255 95.7452 266 109 266H167" stroke="black" stroke-width="6" stroke-linejoin="bevel"/>
-<path d="M0 137H61C74.2548 137 85 126.255 85 113V32C85 18.7452 95.7452 8 109 8H167" stroke="black" stroke-width="6" stroke-linejoin="bevel"/>
+<svg width="130" height="121" viewBox="0 0 130 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 59.9521H75.5M75.5 59.9521V59.9521C79.6657 65.4302 81.5124 72.3256 80.6423 79.1524L78.1622 98.612C76.7498 109.694 85.3851 119.5 96.557 119.5H130M75.5 59.9521V59.9521C79.5263 56.8846 81.6249 51.9128 81.0144 46.8882L77.645 19.1546C76.5047 9.76916 83.83 1.5 93.2845 1.5H130" stroke="#E1E1E1" stroke-opacity="0.5" stroke-width="2"/>
 </svg>
