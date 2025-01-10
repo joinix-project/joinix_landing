@@ -263,18 +263,18 @@ const Contacts = () => {
                         >
                             <img src={emailCircle} alt="emailCircle" style={styles.contactLogo}/>
                         </button>
-                        <button
-                            onClick={() => alert("Email button clicked")}
-                            style={{...styles.iconButton}}
-                        >
-                            <img src={telegramCircle} alt="telegramCircle" style={styles.contactLogo}/>
-                        </button>
-                        <button
-                            onClick={() => alert("Email button clicked")}
-                            style={{...styles.iconButton}}
-                        >
-                            <img src={whatsappCircle} alt="whatsappCircle" style={styles.contactLogo}/>
-                        </button>
+                        {/*<button*/}
+                        {/*    onClick={() => alert("Email button clicked")}*/}
+                        {/*    style={{...styles.iconButton}}*/}
+                        {/*>*/}
+                        {/*    <img src={telegramCircle} alt="telegramCircle" style={styles.contactLogo}/>*/}
+                        {/*</button>*/}
+                        {/*<button*/}
+                        {/*    onClick={() => alert("Email button clicked")}*/}
+                        {/*    style={{...styles.iconButton}}*/}
+                        {/*>*/}
+                        {/*    <img src={whatsappCircle} alt="whatsappCircle" style={styles.contactLogo}/>*/}
+                        {/*</button>*/}
                     </div>
                 </div>
             </div>
