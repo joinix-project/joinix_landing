@@ -6,6 +6,13 @@ import instagramCircle from "../assets/svg/instagram.svg";
 import linkedinCircle from "../assets/svg/linkedinCircle.svg";
 
 const Footer = () => {
+    const handleScroll = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
+
     return (
         <footer style={styles.footer}>
             <div style={{display: "flex",
@@ -13,7 +20,7 @@ const Footer = () => {
                 alignItems: "center",flexDirection: "row",}}>
                 <div style={{display: "flex", gap: '14px'}}>
                     <button
-                        onClick={() => alert("Instagram button clicked")}
+                        onClick={() => window.open("https://www.instagram.com/joinixteam/?igsh=MXh2bTAzZXViNDVuMA%3D%3D&utm_source=qr", "_blank", "noopener,noreferrer")}
                         style={{...styles.iconButton}}
                     >
                         <img src={instagramCircle} alt="instagramCircle" style={styles.contactLogo}/>
@@ -27,7 +34,7 @@ const Footer = () => {
                     </button>
 
                     <button
-                        onClick={() => alert("LinkedIn button clicked")}
+                        onClick={() => window.open("www.linkedin.com/in/joinix-project-645326346", "_blank", "noopener,noreferrer")}
                         style={{...styles.iconButton}}
                     >
                     <img src={linkedinCircle} alt="linkedinCircle" style={styles.contactLogo}/>
@@ -38,18 +45,49 @@ const Footer = () => {
                     <span style={styles.logoText}>Joinix</span>
                 </div>
                 <nav style={styles.nav}>
-                    <a href="#home" style={styles.navLink}>Home</a>
-                    <a href="#about" style={styles.navLink}>About</a>
-                    <a href="#potential" style={styles.navLink}>Potential</a>
-                    <a href="#roadmap" style={styles.navLink}>Roadmap</a>
-                    <a href="#contacts" style={styles.navLink}>Contacts</a>
+                    <button
+                        style={styles.navLink}
+                        onClick={() => handleScroll("home")}
+                    >
+                        Home
+                    </button>
+                    <button
+                        style={styles.navLink}
+                        onClick={() => handleScroll("about")}
+                    >
+                        About
+                    </button>
+                    <button
+                        style={styles.navLink}
+                        onClick={() => handleScroll("potential")}
+                    >
+                        Potential
+                    </button>
+                    <button
+                        style={styles.navLink}
+                        onClick={() => handleScroll("roadmap")}
+                    >
+                        Roadmap
+                    </button>
+                    <button
+                        style={styles.navLink}
+                        onClick={() => handleScroll("contacts")}
+                    >
+                        Contacts
+                    </button>
                 </nav>
             </div>
 
             <div style={{...styles.line, width: '100%'}}></div>
-            <p style={{display: 'flex', alignSelf: "flex-end", color: 'rgb(225, 225, 225, 0.7)', fontSize: "clamp(12px, 1.5vw, 15px)",
+            <p style={{
+                display: 'flex',
+                alignSelf: "flex-end",
+                color: 'rgb(225, 225, 225, 0.7)',
+                fontSize: "clamp(12px, 1.5vw, 15px)",
                 fontWeight: "400",
-                fontFamily: 'Rubik, sans-serif',marginTop: '10px' }}>All rights reserved 2024</p>
+                fontFamily: 'Rubik, sans-serif',
+                marginTop: '10px'
+            }}>All rights reserved 2024</p>
         </footer>
     );
 };
@@ -105,6 +143,9 @@ const styles = {
         fontSize: "clamp(12px, 1.6vw, 20px)",
         fontWeight: "400",
         fontFamily: 'Rubik, sans-serif',
+        background: "none",
+        border: "none",
+        cursor: "pointer",
     },
     downloadButton: {
         backgroundColor: COLORS.secondaryBackground,

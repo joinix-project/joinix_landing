@@ -31,7 +31,7 @@ const FooterMobile = () => {
                 </button>
 
                 <button
-                    onClick={() => alert("Instagram button clicked")}
+                    onClick={() => window.open("https://www.instagram.com/joinixteam/?igsh=MXh2bTAzZXViNDVuMA%3D%3D&utm_source=qr", "_blank", "noopener,noreferrer")}
                     style={{...styles.iconButton}}
                 >
                     <img src={instagramCircle} alt="instagramCircle" style={styles.contactLogo}/>
@@ -58,7 +58,7 @@ const FooterMobile = () => {
                 {/*</button>*/}
 
                 <button
-                    onClick={() => alert("LinkedIn button clicked")}
+                    onClick={() => window.open("www.linkedin.com/in/joinix-project-645326346", "_blank", "noopener,noreferrer")}
                     style={{...styles.iconButton}}
                 >
                     <img src={linkedinCircle} alt="linkedinCircle" style={styles.contactLogo}/>

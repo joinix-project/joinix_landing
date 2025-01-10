@@ -25,7 +25,7 @@ const MobileHome = () => {
         };
     }, [isModalOpen]);
     return (
-        <div style={styles.container}>
+        <div style={styles.container} id="home">
             <div style={{marginBottom: "28px",}}>
                 <p style={styles.title}>Join with</p>
                 <p style={styles.title}>your Friends</p>
