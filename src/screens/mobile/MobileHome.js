@@ -31,7 +31,8 @@ const MobileHome = () => {
                 <p style={styles.title}>your Friends</p>
             </div>
             <p style={styles.secondaryText}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morem ipsum dolor sit amet, adipiscing.
+                Find the perfect team for your project, start building today, gain real-world experience, and turn your ideas into reality
+
             </p>
             <div style={styles.buttonsContainer}>
                 <button style={styles.buttonStyles} onClick={openModal}>Download App</button>
