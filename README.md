@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# Git Flow and Commit Lint
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This document provides a brief overview of Git Flow and Commit Lint practices to maintain a clean and organized Git workflow.
 
-## Available Scripts
+## Git Flow
 
-In the project directory, you can run:
+Git Flow is a branching model for Git, designed to streamline collaboration and release management. Below are the key concepts:
 
-### `npm start`
+### Branches
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Main**: The main branch always contains production-ready code.
+- **Develop**: The develop branch serves as the integration branch for features.
+- **Feature Branches**: Used for developing new features. These branches are created from `develop` and merged back into `develop`.
+  - Naming convention: `feature/feature-name`
+- **Bugfix Branches**: Used for fixing bugs in the development cycle. Created from `develop` and merged back into `develop`.
+  - Naming convention: `bugfix/bug-name`
+- **Hotfix Branches**: Used to quickly fix critical bugs in production. Created from `main` and merged into both `main` and `develop`.
+  - Naming convention: `hotfix/x.y.z`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Workflow
 
-### `npm test`
+1. **Create a Feature Branch**:
+   ```bash
+   git checkout develop
+   git checkout -b feature/feature-name
+   ```
+2. **Work on the Feature**:
+   - Commit changes following the commit lint guidelines.
+3. **Merge Feature Back to Develop**:
+   ```bash
+   git checkout develop
+   git merge feature/feature-name
+   git branch -d feature/feature-name
+   ```
+4. **Create a Bugfix Branch**:
+   ```bash
+   git checkout develop
+   git checkout -b bugfix/bug-name
+   ```
+5. **Work on and Merge Bugfix Back to Develop**:
+   ```bash
+   # Apply fixes and commit
+   git checkout develop
+   git merge bugfix/bug-name
+   git branch -d bugfix/bug-name
+   ```
+6. **Hotfix Workflow**:
+   ```bash
+   git checkout main
+   git checkout -b hotfix/x.y.z
+   # Apply fixes and commit
+   git checkout main
+   git merge hotfix/x.y.z
+   git checkout develop
+   git merge hotfix/x.y.z
+   git branch -d hotfix/x.y.z
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Commit Lint
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Commit Lint ensures that all commit messages follow a standard format. This improves readability and makes it easier to generate changelogs automatically.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Commit Message Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+<type>(<scope>): <subject>
 
-### `npm run eject`
+<body>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<footer>
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Example:
+```
+feat(auth): add user login functionality
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Added API integration for user login.
+Fixed edge case handling for expired tokens.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+BREAKING CHANGE: Changed the authentication API endpoint.
+```
 
-## Learn More
+### Commit Types
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **feat**: A new feature.
+- **fix**: A bug fix.
+- **docs**: Documentation updates.
+- **style**: Code style changes (non-functional, e.g., formatting).
+- **refactor**: Code restructuring without changing functionality.
+- **perf**: Performance improvements.
+- **test**: Adding or modifying tests.
+- **chore**: Maintenance tasks (e.g., build process or tool changes).
+- **ci**: Changes to CI configuration files and scripts.
+- **build**: Changes that affect the build system or dependencies (e.g., adding or removing packages).
+- **revert**: Reverting a previous commit.
+- **wip**: Work in progress commits (to be squashed before merging).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Guidelines
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Use the imperative mood in the subject line (e.g., "Add feature," not "Added feature").
+2. Limit the subject line to 50 characters.
+3. Wrap the body at 72 characters per line.
+4. Use the footer for breaking changes or issue references (e.g., "BREAKING CHANGE" or "Closes #123").
