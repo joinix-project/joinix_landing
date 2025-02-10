@@ -26,23 +26,33 @@ const AboutCompany = () => {
         const fetchUserCount = async () => {
             try {
                 const response = await axios.get('https://api.joinix.info/landing/user-count');
-                setUserCount(response.data);
+                setUserCount(response.data.data);
             } catch (error) {
                 console.error("Error fetching user count:", error);
-                alert("Failed to fetch user count.");
+                // alert("Failed to fetch user count.");
             }
         };
 
         fetchUserCount();
     }, []);
-
     return (
         <div id="about" style={styles.container}>
             <div style={styles.leftSide}>
                 <h2 style={styles.title}>
-                    Collaborate with {userCount} other members!
+                    About our app
                 </h2>
+                <div style={styles.infoBlock}>
+                    <p style={styles.subtitle}>
+                        Collaborate with {userCount} other members!
+                    </p>
+                    <p style={styles.infoText}>
+                        Join a thriving community of tech enthusiasts, developers, and innovators. Whether you're
+                        looking to sharpen your skills, work on real-world projects, or build your portfolio, our
+                        platform connects you with the right people. Start collaborating today and bring your ideas to
+                        life!
 
+                    </p>
+                </div>
                 <div style={styles.infoBlock}>
                     <p style={styles.subtitle}>
                         First experience of team-working
@@ -79,7 +89,7 @@ const AboutCompany = () => {
             <div style={styles.phoneMockup}>
                 <img src={phoneScreen1} alt="Phone Mockup 1" style={styles.phone}/>
             </div>
-            <Modal isOpen={isModalOpen} onClose={closeModal} />
+            <Modal isOpen={isModalOpen} onClose={closeModal}/>
         </div>
     );
 };
