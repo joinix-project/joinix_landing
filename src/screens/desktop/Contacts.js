@@ -65,7 +65,7 @@ const Contacts = () => {
         };
 
         try {
-            await axios.post("https://api.joinix.info/forms/landing/contact", payload);
+            await axios.post("https://api.joinix.info/landing/contact-form", payload);
             alert("Message sent successfully!");
         } catch (error) {
             console.error("Error sending message", error);
