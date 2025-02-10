@@ -75,7 +75,7 @@ const FooterMobile = () => {
                 fontWeight: "400",
                 fontFamily: 'Rubik, sans-serif',
                 marginTop: '10px'
-            }}>All rights reserved 2024</p>
+            }}>All rights reserved {new Date().getFullYear()}</p>
         </footer>
     );
 };

@@ -3,13 +3,29 @@ import COLORS from "../../assets/colors";
 import phoneScreen1 from "../../assets/img/Screen1.png";
 import Modal from "../../components/Modal";
 import MobileModal from "../../components/MobileModal";
+import axios from "axios";
 
 const MobileAboutCompany = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [userCount, setUserCount] = useState(null);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
+
+    useEffect(() => {
+        const fetchUserCount = async () => {
+            try {
+                const response = await axios.get('https://api.joinix.info/landing/user-count');
+                setUserCount(response.data);
+            } catch (error) {
+                console.error("Error fetching user count:", error);
+                alert("Failed to fetch user count.");
+            }
+        };
+
+        fetchUserCount();
+    }, []);
 
     useEffect(() => {
         if (isModalOpen) {
@@ -25,9 +41,8 @@ const MobileAboutCompany = () => {
 
     return (
         <div id="about" style={styles.container}>
-
                 <h2 style={styles.title}>
-                    About our app
+                    Collaborate with {userCount} other members!
                 </h2>
 
                 <div style={styles.infoBlock}>
