@@ -7,6 +7,8 @@ import linkedinCircle from "../assets/svg/linkedinCircle.svg";
 import emailCircle from "../assets/svg/mail.svg";
 import telegramCircle from "../assets/svg/Telegram.svg";
 import whatsappCircle from "../assets/svg/whatsappsmall.svg";
+import PP from "../assets/svg/PP.svg";
+import TOU from "../assets/svg/tou.svg";
 
 const FooterMobile = () => {
     return (
@@ -67,6 +69,23 @@ const FooterMobile = () => {
 
 
             <div style={{...styles.line, width: '100%'}}></div>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'space-around',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                gap: 8,
+                marginTop: 12
+            }}>
+                <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                    <img src={PP} alt="Privacy Policy" style={styles.logoPP}/>
+                    <a href="/privacy-policy" style={styles.navLinkPP}>Privacy Policy</a>
+                </div>
+                <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                    <img src={TOU} alt="Privacy Policy" style={styles.logoPP}/>
+                    <a href="/terms-of-use" style={styles.navLinkPP}> Terms of Use</a>
+                </div>
+            </div>
             <p style={{
                 display: 'flex',
                 alignSelf: "center",
@@ -106,6 +125,20 @@ const styles = {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
+    },
+    logoPP: {
+        height: "clamp(20px, 1.7vw, 30px)",
+        marginRight: "clamp(4px, 0.5vw, 8px)",
+    },
+    navLinkPP: {
+        color: COLORS.primaryText,
+        textDecoration: "none",
+        fontSize: "clamp(12px, 1.6vw, 20px)",
+        fontWeight: "500",
+        fontFamily: 'Rubik, sans-serif',
+        background: "none",
+        border: "none",
+        cursor: "pointer",
     },
     logo: {
         height: "72px",
