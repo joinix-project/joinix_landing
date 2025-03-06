@@ -16,11 +16,17 @@ import MobileAboutCompany from "./screens/mobile/MobileAboutCompany";
 import MobilePotential from "./screens/mobile/MobilePotential";
 import MobileContacts from "./screens/mobile/MobileContacts";
 import FooterMobile from "./components/FooterMobile";
+import PrivacyPolicy from "./screens/desktop/PrivacyPolicy";
+import TermsOfUse from "./screens/desktop/TermsOfUse";
 
 const App = () => {
     return (
         <Router>
-            <AppContent />
+            <Routes>
+                <Route path="/" element={<AppContent />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-use" element={<TermsOfUse />} />
+            </Routes>
         </Router>
     );
 };

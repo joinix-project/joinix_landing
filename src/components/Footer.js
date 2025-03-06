@@ -1,4 +1,6 @@
 import logo from "../assets/svg/logoSvg.svg";
+import PP from "../assets/svg/PP.svg";
+import TOU from "../assets/svg/tou.svg";
 import COLORS from "../assets/colors";
 import React, {useEffect, useState} from "react";
 import githubCircle from "../assets/svg/githubCircle.svg";
@@ -15,9 +17,11 @@ const Footer = () => {
 
     return (
         <footer style={styles.footer}>
-            <div style={{display: "flex",
+            <div style={{
+                display: "flex",
                 justifyContent: "space-between",
-                alignItems: "center",flexDirection: "row",}}>
+                alignItems: "center", flexDirection: "row",
+            }}>
                 <div style={{display: "flex", gap: '14px'}}>
                     <button
                         onClick={() => window.open("https://www.instagram.com/joinixteam/?igsh=MXh2bTAzZXViNDVuMA%3D%3D&utm_source=qr", "_blank", "noopener,noreferrer")}
@@ -37,7 +41,7 @@ const Footer = () => {
                         onClick={() => window.open("www.linkedin.com/in/joinix-project-645326346", "_blank", "noopener,noreferrer")}
                         style={{...styles.iconButton}}
                     >
-                    <img src={linkedinCircle} alt="linkedinCircle" style={styles.contactLogo}/>
+                        <img src={linkedinCircle} alt="linkedinCircle" style={styles.contactLogo}/>
                     </button>
                 </div>
                 <div style={styles.logoContainer}>
@@ -79,6 +83,24 @@ const Footer = () => {
             </div>
 
             <div style={{...styles.line, width: '100%'}}></div>
+
+            <div style={{
+                display: 'flex',
+                justifyContent: 'space-around',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                gap: 8,
+                marginTop: 12
+            }}>
+                <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                    <img src={PP} alt="Privacy Policy" style={styles.logoPP}/>
+                    <a href="/privacy-policy" style={styles.navLinkPP}>Privacy Policy</a>
+                </div>
+                <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                    <img src={TOU} alt="Privacy Policy" style={styles.logoPP}/>
+                    <a href="/terms-of-use" style={styles.navLinkPP}> Terms of Use</a>
+                </div>
+            </div>
             <p style={{
                 display: 'flex',
                 alignSelf: "flex-end",
@@ -122,8 +144,12 @@ const styles = {
         height: "clamp(56px, 5vw, 112px)",
         marginRight: "clamp(4px, 0.5vw, 8px)",
     },
+    logoPP: {
+        height: "clamp(20px, 1.7vw, 30px)",
+        marginRight: "clamp(4px, 0.5vw, 8px)",
+    },
     logoText: {
-        fontSize: "clamp(24px, 2.7vw, 46px)",
+        fontSize: "clamp(20px, 2.7vw, 46px)",
         fontWeight: "400",
         fontFamily: 'Rubik, sans-serif',
         color: "#fff",
@@ -142,6 +168,16 @@ const styles = {
         textDecoration: "none",
         fontSize: "clamp(12px, 1.6vw, 20px)",
         fontWeight: "400",
+        fontFamily: 'Rubik, sans-serif',
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+    },
+    navLinkPP: {
+        color: COLORS.primaryText,
+        textDecoration: "none",
+        fontSize: "clamp(12px, 1.6vw, 20px)",
+        fontWeight: "500",
         fontFamily: 'Rubik, sans-serif',
         background: "none",
         border: "none",
