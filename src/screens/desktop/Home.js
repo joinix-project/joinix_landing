@@ -6,22 +6,21 @@ import phoneScreen3 from "../../assets/img/Screen3.png"
 import Modal from "../../components/Modal";
 
 const Home = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
-
-    useEffect(() => {
-        if (isModalOpen) {
-            document.body.style.overflow = "hidden";
+    const handleDownload = () => {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const ua = userAgent.toLowerCase();
+    
+        const isIOS = /iphone|ipad|ipod/.test(ua);
+        const isAndroid = /android/.test(ua);
+    
+        if (isIOS) {
+            window.open("https://apps.apple.com/ua/app/joinix/id6743486379", "_blank");
+        } else if (isAndroid) {
+            window.open("https://play.google.com/store/apps/details?id=com.joinix", "_blank");
         } else {
-            document.body.style.overflow = "";
+            window.open("https://apps.apple.com/ua/app/joinix/id6743486379", "_blank");
         }
-
-        return () => {
-            document.body.style.overflow = "";
-        };
-    }, [isModalOpen]);
+    };
 
     return (
         <div style={styles.container}  id="home">
@@ -33,7 +32,7 @@ const Home = () => {
                 Find the perfect team for your project, start building today, gain real-world experience, and turn your ideas into reality
             </p>
             <div style={styles.buttonsContainer}>
-                <button style={styles.buttonStyles} onClick={openModal}>
+                <button style={styles.buttonStyles} onClick={handleDownload}>
                     Download App
                 </button>
                 <button style={{ ...styles.buttonStyles, backgroundColor: COLORS.secondaryBackground }}>
@@ -46,7 +45,6 @@ const Home = () => {
                 <img src={phoneScreen3} alt="Phone Mockup 3" style={styles.phone} />
             </div>
             <div style={{ ...styles.redLine, width: "100%" }}></div>
-            <Modal isOpen={isModalOpen} onClose={closeModal} />
         </div>
     );
 };
