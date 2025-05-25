@@ -12,7 +12,22 @@ const Header = () => {
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
-
+    const handleDownload = () => {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const ua = userAgent.toLowerCase();
+    
+        const isIOS = /iphone|ipad|ipod/.test(ua);
+        const isAndroid = /android/.test(ua);
+    
+        if (isIOS) {
+            window.open("https://apps.apple.com/ua/app/joinix/id6743486379", "_blank");
+        } else if (isAndroid) {
+            window.open("https://play.google.com/store/apps/details?id=com.joinix", "_blank");
+        } else {
+            window.open("https://apps.apple.com/ua/app/joinix/id6743486379", "_blank");
+        }
+    };
+    
     const handleScroll = (id) => {
         const element = document.getElementById(id);
         if (element) {
@@ -72,14 +87,14 @@ const Header = () => {
                     </button>
                 </nav>
             )}
-            <button style={styles.downloadButton} onClick={openModal}>
+            <button style={styles.downloadButton} onClick={handleDownload}>
                 Download App
             </button>
-            {isMobile ? (
+            {/* {isMobile ? (
                 <MobileModal isOpen={isModalOpen} onClose={closeModal} />
             ) : (
                 <Modal isOpen={isModalOpen} onClose={closeModal} />
-            )}
+            )} */}
         </header>
     );
 };

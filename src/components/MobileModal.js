@@ -39,7 +39,7 @@ const styles = {
         zIndex: 1000,
     },
     modal: {
-        backgroundColor: "#fff",
+        backgroundColor: "#232323",
         paddingTop: "25px",
         paddingBottom: "25px",
         paddingLeft: "40px",
@@ -64,6 +64,7 @@ const styles = {
         fontFamily: "Rubik, sans-serif",
         marginTop: '0px',
         marginBottom: "12px",
+        color: "#fff",
     },
     button: {
         backgroundColor: COLORS.accent,

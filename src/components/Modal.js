@@ -39,7 +39,7 @@ const styles = {
         zIndex: 1000,
     },
     modal: {
-        backgroundColor: "#fff",
+        backgroundColor: "#232323",
         paddingTop: "25px",
         paddingBottom: "25px",
         paddingLeft: "40px",
@@ -57,12 +57,14 @@ const styles = {
     modalImage: {
         width: "clamp(50px, 5vw, 100px)",
         marginBottom: "8px",
+    
     },
     modalText: {
         fontSize: "clamp(16px, 2vw, 24px)",
         fontWeight: "400",
         fontFamily: "Rubik, sans-serif",
         marginTop: '0px',
+        color: "#fff",
         marginBottom: "12px",
     },
     button: {
