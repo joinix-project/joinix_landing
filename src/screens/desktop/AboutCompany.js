@@ -21,6 +21,22 @@ const AboutCompany = () => {
             document.body.style.overflow = "";
         };
     }, [isModalOpen]);
+    
+    const handleDownload = () => {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const ua = userAgent.toLowerCase();
+    
+        const isIOS = /iphone|ipad|ipod/.test(ua);
+        const isAndroid = /android/.test(ua);
+    
+        if (isIOS) {
+            window.open("https://apps.apple.com/ua/app/joinix/id6743486379", "_blank");
+        } else if (isAndroid) {
+            window.open("https://play.google.com/store/apps/details?id=com.joinix", "_blank");
+        } else {
+            window.open("https://apps.apple.com/ua/app/joinix/id6743486379", "_blank");
+        }
+    };
 
     useEffect(() => {
         const fetchUserCount = async () => {
@@ -84,7 +100,7 @@ const AboutCompany = () => {
                         share files seamlessly in one place, boosting efficiency.
                     </p>
                 </div>
-                <button style={styles.buttonStyles} onClick={openModal}>Download App</button>
+                <button style={styles.buttonStyles} onClick={handleDownload}>Download App</button>
             </div>
             <div style={styles.phoneMockup}>
                 <img src={phoneScreen1} alt="Phone Mockup 1" style={styles.phone}/>
