@@ -1,27 +1,11 @@
 import React, {useEffect, useState} from "react";
 import COLORS from "../../assets/colors";
 import phoneScreen1 from "../../assets/img/Screen1.png";
-import Modal from "../../components/Modal";
 import axios from "axios";
 
 const AboutCompany = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const [userCount, setUserCount] = useState(null);
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
-
-    useEffect(() => {
-        if (isModalOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-        }
-        return () => {
-            document.body.style.overflow = "";
-        };
-    }, [isModalOpen]);
-    
     const handleDownload = () => {
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         const ua = userAgent.toLowerCase();
@@ -105,7 +89,6 @@ const AboutCompany = () => {
             <div style={styles.phoneMockup}>
                 <img src={phoneScreen1} alt="Phone Mockup 1" style={styles.phone}/>
             </div>
-            <Modal isOpen={isModalOpen} onClose={closeModal}/>
         </div>
     );
 };

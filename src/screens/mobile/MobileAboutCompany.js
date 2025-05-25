@@ -6,12 +6,23 @@ import MobileModal from "../../components/MobileModal";
 import axios from "axios";
 
 const MobileAboutCompany = () => {
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const [userCount, setUserCount] = useState(null);
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+    const handleDownload = () => {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const ua = userAgent.toLowerCase();
+    
+        const isIOS = /iphone|ipad|ipod/.test(ua);
+        const isAndroid = /android/.test(ua);
+    
+        if (isIOS) {
+            window.open("https://apps.apple.com/ua/app/joinix/id6743486379", "_blank");
+        } else if (isAndroid) {
+            window.open("https://play.google.com/store/apps/details?id=com.joinix", "_blank");
+        } else {
+            window.open("https://apps.apple.com/ua/app/joinix/id6743486379", "_blank");
+        }
+    };
 
     useEffect(() => {
         const fetchUserCount = async () => {
@@ -26,18 +37,6 @@ const MobileAboutCompany = () => {
 
         fetchUserCount();
     }, []);
-
-    useEffect(() => {
-        if (isModalOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-        }
-
-        return () => {
-            document.body.style.overflow = "";
-        };
-    }, [isModalOpen]);
 
     return (
         <div id="about" style={styles.container}>
@@ -87,8 +86,7 @@ const MobileAboutCompany = () => {
                     share files seamlessly in one place, boosting efficiency.
                 </p>
             </div>
-            <button style={styles.buttonStyles} onClick={openModal}>Download App</button>
-            <MobileModal isOpen={isModalOpen} onClose={closeModal}/>
+            <button style={styles.buttonStyles} onClick={handleDownload}>Download App</button>
         </div>
     );
 };
