@@ -45,9 +45,9 @@ const roadmapData = [
         chapter: "Chapter 5",
         title: "Final Stages",
         phases: [
-            { title: "Core Features", infoText: "Combine all features into an all-in-one platform." },
-            { title: "Landing Page", infoText: "Develop polished native Android and iOS apps." },
-            { title: "Showcase MVP", infoText: "Provide users with insights into skills, contributions, and project impact." },
+            { title: "Strategic Partnerships & Ecosystem Integration", infoText: "Partner with tech companies, learning platforms, and career services to expand visibility and opportunities." },
+            { title: "Certification Programs", infoText: "Offer accredited certificates and mentor-led projects in collaboration with universities and industry experts." },
+            { title: "Innovation Lab", infoText: "Develop and test new EdTech solutions (e.g., VR/AR learning, AI-driven features, advanced team collaboration tools)." },
         ],
     },
 ];
