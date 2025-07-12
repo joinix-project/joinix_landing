@@ -142,15 +142,15 @@ const RoadMap = () => {
                 <div style={styles.col}>
                     <PhaseTitleBlock style={{width: '30vw',}} phaseTitle='Final Stages'/>
 
-                    <PhaseBlock title='Core Features'
+                    <PhaseBlock title='Strategic Partnerships & Ecosystem Integration'
                                 style={{width: '30vw',}}
-                                infoText='Combine all features into an all-in-one platform'/>
-                    <PhaseBlock title='Landing Page'
+                                infoText='Partner with tech companies, learning platforms, and career services to expand visibility and opportunities.'/>
+                    <PhaseBlock title='Certification Programs'
                                 style={{width: '30vw',}}
-                                infoText='Develop polished native Android and iOS apps'/>
-                    <PhaseBlock title='Showcase MVP'
+                                infoText='Offer accredited certificates and mentor-led projects in collaboration with universities and industry experts.'/>
+                    <PhaseBlock title='Innovation Lab'
                                 style={{width: '30vw',}}
-                                infoText='Provide users with insights into skills, contributions, and project impact'/>
+                                infoText='Develop and test new EdTech solutions (e.g., VR/AR learning, AI-driven features, advanced team collaboration tools).'/>
 
                 </div>
                 <div style={{width: '10vw'}}/>
